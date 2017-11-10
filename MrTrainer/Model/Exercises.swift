@@ -363,58 +363,6 @@ struct Exercises {
         }
         return images
     }
-    
-    //возвращает названия всех упражнений
-//    func getAllNames() -> [String] {
-//        var allNames = [String]()
-//        allNames.append(ellipticalMachine.name)
-//        allNames.append(bikeMachine.name)
-//        allNames.append(runningMachine.name)
-//        allNames.append(behindTheNeck.name)
-//        allNames.append(bentOver.name)
-//        allNames.append(deadlift.name)
-//        allNames.append(pullUp.name)
-//        allNames.append(behindPress.name)
-//        allNames.append(dumbbell.name)
-//        allNames.append(overhead.name)
-//        allNames.append(rearUpright.name)
-//        allNames.append(barbellSquat.name)
-//        allNames.append(legPress.name)
-//        allNames.append(benchPress.name)
-//        allNames.append(cableCrossover.name)
-//        allNames.append(dips.name)
-//        allNames.append(inclineSitUp.name)
-//        allNames.append(kneeRaise.name)
-//        allNames.append(hummerCurl.name)
-//        allNames.append(triceps.name)
-//        return allNames
-//    }
-
-//    func getAllNamesThumbnails() -> [[String]] {
-//        var allNamesThumbnails = [[String]]()
-//        allNamesThumbnails.append(ellipticalMachine.namesThumbnails)
-//        allNamesThumbnails.append(bikeMachine.namesThumbnails)
-//        allNamesThumbnails.append(runningMachine.namesThumbnails)
-//        allNamesThumbnails.append(behindTheNeck.namesThumbnails)
-//        allNamesThumbnails.append(bentOver.namesThumbnails)
-//        allNamesThumbnails.append(deadlift.namesThumbnails)
-//        allNamesThumbnails.append(pullUp.namesThumbnails)
-//        allNamesThumbnails.append(behindPress.namesThumbnails)
-//        allNamesThumbnails.append(dumbbell.namesThumbnails)
-//        allNamesThumbnails.append(overhead.namesThumbnails)
-//        allNamesThumbnails.append(rearUpright.namesThumbnails)
-//        allNamesThumbnails.append(barbellSquat.namesThumbnails)
-//        allNamesThumbnails.append(legPress.namesThumbnails)
-//        allNamesThumbnails.append(benchPress.namesThumbnails)
-//        allNamesThumbnails.append(cableCrossover.namesThumbnails)
-//        allNamesThumbnails.append(dips.namesThumbnails)
-//        allNamesThumbnails.append(inclineSitUp.namesThumbnails)
-//        allNamesThumbnails.append(kneeRaise.namesThumbnails)
-//        allNamesThumbnails.append(hummerCurl.namesThumbnails)
-//        allNamesThumbnails.append(triceps.namesThumbnails)
-//        return allNamesThumbnails
-//    }
-
 }
 
 
