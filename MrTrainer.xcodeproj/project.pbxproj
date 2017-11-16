@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490F47141FBAE96A007D16E6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F47131FBAE96A007D16E6 /* TabBarViewController.swift */; };
+		490F47161FBB0922007D16E6 /* TextForExercises.txt in Resources */ = {isa = PBXBuildFile; fileRef = 490F47151FBB0922007D16E6 /* TextForExercises.txt */; };
 		4946C15A1FA1F14F009157C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946C1591FA1F14F009157C3 /* AppDelegate.swift */; };
 		4946C15F1FA1F150009157C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4946C15D1FA1F150009157C3 /* Main.storyboard */; };
 		4946C1641FA1F150009157C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4946C1621FA1F150009157C3 /* LaunchScreen.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		490F47131FBAE96A007D16E6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		490F47151FBB0922007D16E6 /* TextForExercises.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TextForExercises.txt; sourceTree = "<group>"; };
 		4946C1561FA1F14F009157C3 /* MrTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MrTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4946C1591FA1F14F009157C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4946C15E1FA1F150009157C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 		490F46C71FB4696D007D16E6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				490F47131FBAE96A007D16E6 /* TabBarViewController.swift */,
 				494EF4BE1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift */,
 				4946C16D1FA20E75009157C3 /* ExercisesTableViewCell.swift */,
 				4946C16B1FA20820009157C3 /* ExercisesTableViewController.swift */,
@@ -74,6 +79,7 @@
 				4946C1591FA1F14F009157C3 /* AppDelegate.swift */,
 				494EF4B81FA3622E00CF8EC3 /* Assets.xcassets */,
 				4946C1651FA1F150009157C3 /* Info.plist */,
+				490F47151FBB0922007D16E6 /* TextForExercises.txt */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -165,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4946C1641FA1F150009157C3 /* LaunchScreen.storyboard in Resources */,
+				490F47161FBB0922007D16E6 /* TextForExercises.txt in Resources */,
 				494EF4B91FA3622E00CF8EC3 /* Assets.xcassets in Resources */,
 				4946C15F1FA1F150009157C3 /* Main.storyboard in Resources */,
 			);
@@ -181,6 +188,7 @@
 				49BFFE831FA76B7C007B6EA0 /* Exercises.swift in Sources */,
 				4946C16C1FA20820009157C3 /* ExercisesTableViewController.swift in Sources */,
 				494EF4BF1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift in Sources */,
+				490F47141FBAE96A007D16E6 /* TabBarViewController.swift in Sources */,
 				4946C16E1FA20E75009157C3 /* ExercisesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

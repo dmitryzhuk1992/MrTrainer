@@ -17,6 +17,7 @@ struct Exercise {
     let thumbnails: [UIImage]
     let duration: Double
     let images: [UIImage]
+    var isFavourite: Bool
 }
 
 struct Exercises {
@@ -24,46 +25,282 @@ struct Exercises {
     static let numberOfExercises = 20
 
     //эллиптический тренажёр
-    private static let ellipticalMachine: Exercise = Exercise(index: 0, name: "Elliptical Machine", muscles: [" quads "," middle back "], difficulty: " medium ", thumbnails: [#imageLiteral(resourceName: "ellips_0"),#imageLiteral(resourceName: "ellips_1"),#imageLiteral(resourceName: "ellips_2"),#imageLiteral(resourceName: "ellips_3"),#imageLiteral(resourceName: "ellips_4"),#imageLiteral(resourceName: "ellips_5"),#imageLiteral(resourceName: "ellips_6"),#imageLiteral(resourceName: "ellips_7"),#imageLiteral(resourceName: "ellips_8"),#imageLiteral(resourceName: "ellips_9"),#imageLiteral(resourceName: "ellips_10"),#imageLiteral(resourceName: "ellips_11")], duration: 1.4, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var ellipticalMachine: Exercise = Exercise(index: 0,
+                                                              name: "Elliptical Machine",
+                                                              muscles: [" quads "," middle back "],
+                                                              difficulty: " medium ",
+                                                              thumbnails: [#imageLiteral(resourceName: "ellips_0"),#imageLiteral(resourceName: "ellips_1"),#imageLiteral(resourceName: "ellips_2"),#imageLiteral(resourceName: "ellips_3"),#imageLiteral(resourceName: "ellips_4"),#imageLiteral(resourceName: "ellips_5"),#imageLiteral(resourceName: "ellips_6"),#imageLiteral(resourceName: "ellips_7"),#imageLiteral(resourceName: "ellips_8"),#imageLiteral(resourceName: "ellips_9"),#imageLiteral(resourceName: "ellips_10"),#imageLiteral(resourceName: "ellips_11")],
+                                                              duration: 1.4,
+                                                              images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                              isFavourite: false)
     //велотренажёр
-    private static let bikeMachine: Exercise = Exercise(index: 1, name: "Exercise Bikes", muscles: [" quads "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "bike_0"),#imageLiteral(resourceName: "bike_1"),#imageLiteral(resourceName: "bike_2"),#imageLiteral(resourceName: "bike_3"),#imageLiteral(resourceName: "bike_4"),#imageLiteral(resourceName: "bike_5"),#imageLiteral(resourceName: "bike_6"),#imageLiteral(resourceName: "bike_7"),#imageLiteral(resourceName: "bike_8"),#imageLiteral(resourceName: "bike_9"),#imageLiteral(resourceName: "bike_10"),#imageLiteral(resourceName: "bike_11")], duration: 1.2, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var bikeMachine: Exercise = Exercise(index: 1,
+                                                        name: "Exercise Bikes",
+                                                        muscles: [" quads "],
+                                                        difficulty: " easy ",
+                                                        thumbnails: [#imageLiteral(resourceName: "bike_0"),#imageLiteral(resourceName: "bike_1"),#imageLiteral(resourceName: "bike_2"),#imageLiteral(resourceName: "bike_3"),#imageLiteral(resourceName: "bike_4"),#imageLiteral(resourceName: "bike_5"),#imageLiteral(resourceName: "bike_6"),#imageLiteral(resourceName: "bike_7"),#imageLiteral(resourceName: "bike_8"),#imageLiteral(resourceName: "bike_9"),#imageLiteral(resourceName: "bike_10"),#imageLiteral(resourceName: "bike_11")],
+                                                        duration: 1.2,
+                                                        images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                        isFavourite: false)
     //беговая дорожка
-    private static let runningMachine: Exercise = Exercise(index: 2, name: "Running Machine", muscles: [" quads "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "running_0"),#imageLiteral(resourceName: "running_1"),#imageLiteral(resourceName: "running_2"),#imageLiteral(resourceName: "running_3"),#imageLiteral(resourceName: "running_4"),#imageLiteral(resourceName: "running_5"),#imageLiteral(resourceName: "running_6"),#imageLiteral(resourceName: "running_7"),#imageLiteral(resourceName: "running_8"),#imageLiteral(resourceName: "running_9"),#imageLiteral(resourceName: "running_10")], duration: 0.8, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var runningMachine: Exercise = Exercise(index: 2,
+                                                           name: "Running Machine",
+                                                           muscles: [" quads "],
+                                                           difficulty: " easy ",
+                                                           thumbnails: [#imageLiteral(resourceName: "running_0"),#imageLiteral(resourceName: "running_1"),#imageLiteral(resourceName: "running_2"),#imageLiteral(resourceName: "running_3"),#imageLiteral(resourceName: "running_4"),#imageLiteral(resourceName: "running_5"),#imageLiteral(resourceName: "running_6"),#imageLiteral(resourceName: "running_7"),#imageLiteral(resourceName: "running_8"),#imageLiteral(resourceName: "running_9"),#imageLiteral(resourceName: "running_10")],
+                                                           duration: 0.8,
+                                                           images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                           isFavourite: false)
     //тяга верхнего блока за голову
-    private static let behindTheNeck: Exercise = Exercise(index: 3, name: "Behind the Neck Lat Pulldown", muscles: [" lats "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "behindTheNeck_0"),#imageLiteral(resourceName: "behindTheNeck_1"),#imageLiteral(resourceName: "behindTheNeck_2"),#imageLiteral(resourceName: "behindTheNeck_3"),#imageLiteral(resourceName: "behindTheNeck_4"),#imageLiteral(resourceName: "behindTheNeck_5"),#imageLiteral(resourceName: "behindTheNeck_6"),#imageLiteral(resourceName: "behindTheNeck_7"),#imageLiteral(resourceName: "behindTheNeck_8"),#imageLiteral(resourceName: "behindTheNeck_9"),#imageLiteral(resourceName: "behindTheNeck_10"),#imageLiteral(resourceName: "behindTheNeck_11")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var behindTheNeck: Exercise = Exercise(index: 3,
+                                                          name: "Behind the Neck Lat Pulldown",
+                                                          muscles: [" lats "],
+                                                          difficulty: " easy ",
+                                                          thumbnails: [#imageLiteral(resourceName: "behindTheNeck_0"),#imageLiteral(resourceName: "behindTheNeck_1"),#imageLiteral(resourceName: "behindTheNeck_2"),#imageLiteral(resourceName: "behindTheNeck_3"),#imageLiteral(resourceName: "behindTheNeck_4"),#imageLiteral(resourceName: "behindTheNeck_5"),#imageLiteral(resourceName: "behindTheNeck_6"),#imageLiteral(resourceName: "behindTheNeck_7"),#imageLiteral(resourceName: "behindTheNeck_8"),#imageLiteral(resourceName: "behindTheNeck_9"),#imageLiteral(resourceName: "behindTheNeck_10"),#imageLiteral(resourceName: "behindTheNeck_11")],
+                                                          duration: 1.5,
+                                                          images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                          isFavourite: false)
     //тяга штанги в наклоне
-    private static let bentOver: Exercise = Exercise(index: 4, name: "Bent Over Barbell Row", muscles: [" middle back "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "bent_0"),#imageLiteral(resourceName: "bent_1"),#imageLiteral(resourceName: "bent_2"),#imageLiteral(resourceName: "bent_3"),#imageLiteral(resourceName: "bent_4"),#imageLiteral(resourceName: "bent_5"),#imageLiteral(resourceName: "bent_6"),#imageLiteral(resourceName: "bent_7"),#imageLiteral(resourceName: "bent_8"),#imageLiteral(resourceName: "bent_9"),#imageLiteral(resourceName: "bent_10"),#imageLiteral(resourceName: "bent_11")], duration: 1.6, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var bentOver: Exercise = Exercise(index: 4,
+                                                     name: "Bent Over Barbell Row",
+                                                     muscles: [" middle back "],
+                                                     difficulty: " easy ",
+                                                     thumbnails: [#imageLiteral(resourceName: "bent_0"),#imageLiteral(resourceName: "bent_1"),#imageLiteral(resourceName: "bent_2"),#imageLiteral(resourceName: "bent_3"),#imageLiteral(resourceName: "bent_4"),#imageLiteral(resourceName: "bent_5"),#imageLiteral(resourceName: "bent_6"),#imageLiteral(resourceName: "bent_7"),#imageLiteral(resourceName: "bent_8"),#imageLiteral(resourceName: "bent_9"),#imageLiteral(resourceName: "bent_10"),#imageLiteral(resourceName: "bent_11")],
+                                                     duration: 1.6,
+                                                     images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                     isFavourite: false)
     //становая тяга
-    private static let deadlift: Exercise = Exercise(index: 5, name: "Deadlift", muscles: [" quads "], difficulty: " medium ", thumbnails: [#imageLiteral(resourceName: "deadlift_0"),#imageLiteral(resourceName: "deadlift_1"),#imageLiteral(resourceName: "deadlift_2"),#imageLiteral(resourceName: "deadlift_3"),#imageLiteral(resourceName: "deadlift_4"),#imageLiteral(resourceName: "deadlift_5"),#imageLiteral(resourceName: "deadlift_6"),#imageLiteral(resourceName: "deadlift_7"),#imageLiteral(resourceName: "deadlift_8"),#imageLiteral(resourceName: "deadlift_9"),#imageLiteral(resourceName: "deadlift_10"),#imageLiteral(resourceName: "deadlift_11")], duration: 1.6, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var deadlift: Exercise = Exercise(index: 5,
+                                                     name: "Deadlift",
+                                                     muscles: [" quads "],
+                                                     difficulty: " medium ",
+                                                     thumbnails: [#imageLiteral(resourceName: "deadlift_0"),#imageLiteral(resourceName: "deadlift_1"),#imageLiteral(resourceName: "deadlift_2"),#imageLiteral(resourceName: "deadlift_3"),#imageLiteral(resourceName: "deadlift_4"),#imageLiteral(resourceName: "deadlift_5"),#imageLiteral(resourceName: "deadlift_6"),#imageLiteral(resourceName: "deadlift_7"),#imageLiteral(resourceName: "deadlift_8"),#imageLiteral(resourceName: "deadlift_9"),#imageLiteral(resourceName: "deadlift_10"),#imageLiteral(resourceName: "deadlift_11")],
+                                                     duration: 1.6,
+                                                     images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                     isFavourite: false)
     //подтягивания
-    private static let pullUp: Exercise = Exercise(index: 6, name: "Pull Up", muscles: ["lats"], difficulty: " medium ", thumbnails: [#imageLiteral(resourceName: "pullUp_0"),#imageLiteral(resourceName: "pullUp_1"),#imageLiteral(resourceName: "pullUp_2"),#imageLiteral(resourceName: "pullUp_3"),#imageLiteral(resourceName: "pullUp_4"),#imageLiteral(resourceName: "pullUp_5"),#imageLiteral(resourceName: "pullUp_6"),#imageLiteral(resourceName: "pullUp_7"),#imageLiteral(resourceName: "pullUp_8"),#imageLiteral(resourceName: "pullUp_9"),#imageLiteral(resourceName: "pullUp_10"),#imageLiteral(resourceName: "pullUp_11")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var pullUp: Exercise = Exercise(index: 6,
+                                                   name: "Pull Up",
+                                                   muscles: ["lats"],
+                                                   difficulty: " medium ",
+                                                   thumbnails: [#imageLiteral(resourceName: "pullUp_0"),#imageLiteral(resourceName: "pullUp_1"),#imageLiteral(resourceName: "pullUp_2"),#imageLiteral(resourceName: "pullUp_3"),#imageLiteral(resourceName: "pullUp_4"),#imageLiteral(resourceName: "pullUp_5"),#imageLiteral(resourceName: "pullUp_6"),#imageLiteral(resourceName: "pullUp_7"),#imageLiteral(resourceName: "pullUp_8"),#imageLiteral(resourceName: "pullUp_9"),#imageLiteral(resourceName: "pullUp_10"),#imageLiteral(resourceName: "pullUp_11")],
+                                                   duration: 1.5,
+                                                   images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                   isFavourite: false)
     //жим штанги из-за головы в машине Смита
-    private static let behindPress: Exercise = Exercise(index: 7, name: "Behind the Neck Press", muscles: [" shoulders "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "behindPress_0"),#imageLiteral(resourceName: "behindPress_1"),#imageLiteral(resourceName: "behindPress_2"),#imageLiteral(resourceName: "behindPress_3"),#imageLiteral(resourceName: "behindPress_4"),#imageLiteral(resourceName: "behindPress_5"),#imageLiteral(resourceName: "behindPress_6"),#imageLiteral(resourceName: "behindPress_7"),#imageLiteral(resourceName: "behindPress_8"),#imageLiteral(resourceName: "behindPress_9"),#imageLiteral(resourceName: "behindPress_10"),#imageLiteral(resourceName: "behindPress_11")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var behindPress: Exercise = Exercise(index: 7,
+                                                        name: "Behind the Neck Press",
+                                                        muscles: [" shoulders "],
+                                                        difficulty: " easy ",
+                                                        thumbnails: [#imageLiteral(resourceName: "behindPress_0"),#imageLiteral(resourceName: "behindPress_1"),#imageLiteral(resourceName: "behindPress_2"),#imageLiteral(resourceName: "behindPress_3"),#imageLiteral(resourceName: "behindPress_4"),#imageLiteral(resourceName: "behindPress_5"),#imageLiteral(resourceName: "behindPress_6"),#imageLiteral(resourceName: "behindPress_7"),#imageLiteral(resourceName: "behindPress_8"),#imageLiteral(resourceName: "behindPress_9"),#imageLiteral(resourceName: "behindPress_10"),#imageLiteral(resourceName: "behindPress_11")],
+                                                        duration: 1.5,
+                                                        images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                        isFavourite: false)
     //разведение рук с гантелями в стороны
-    private static let dumbbell: Exercise = Exercise(index: 8, name: "Dumbbell Side Raise", muscles: [" shoulders "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "dumbbell_0"),#imageLiteral(resourceName: "dumbbell_1"),#imageLiteral(resourceName: "dumbbell_2"),#imageLiteral(resourceName: "dumbbell_3"),#imageLiteral(resourceName: "dumbbell_4"),#imageLiteral(resourceName: "dumbbell_5"),#imageLiteral(resourceName: "dumbbell_6"),#imageLiteral(resourceName: "dumbbell_7"),#imageLiteral(resourceName: "dumbbell_8"),#imageLiteral(resourceName: "dumbbell_9"),#imageLiteral(resourceName: "dumbbell_10"),#imageLiteral(resourceName: "dumbbell_11")], duration: 1.7, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var dumbbell: Exercise = Exercise(index: 8,
+                                                     name: "Dumbbell Side Raise",
+                                                     muscles: [" shoulders "],
+                                                     difficulty: " easy ",
+                                                     thumbnails: [#imageLiteral(resourceName: "dumbbell_0"),#imageLiteral(resourceName: "dumbbell_1"),#imageLiteral(resourceName: "dumbbell_2"),#imageLiteral(resourceName: "dumbbell_3"),#imageLiteral(resourceName: "dumbbell_4"),#imageLiteral(resourceName: "dumbbell_5"),#imageLiteral(resourceName: "dumbbell_6"),#imageLiteral(resourceName: "dumbbell_7"),#imageLiteral(resourceName: "dumbbell_8"),#imageLiteral(resourceName: "dumbbell_9"),#imageLiteral(resourceName: "dumbbell_10"),#imageLiteral(resourceName: "dumbbell_11")],
+                                                     duration: 1.7,
+                                                     images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                     isFavourite: false)
     //армейский жим стоя
-    private static let overhead: Exercise = Exercise(index: 9, name: "Overhead Barbell Press", muscles: [" shoulders "], difficulty: " hard "/*medium*/, thumbnails: [#imageLiteral(resourceName: "overhead_0"),#imageLiteral(resourceName: "overhead_1"),#imageLiteral(resourceName: "overhead_2"),#imageLiteral(resourceName: "overhead_3"),#imageLiteral(resourceName: "overhead_4"),#imageLiteral(resourceName: "overhead_5"),#imageLiteral(resourceName: "overhead_6"),#imageLiteral(resourceName: "overhead_7"),#imageLiteral(resourceName: "overhead_8"),#imageLiteral(resourceName: "overhead_9"),#imageLiteral(resourceName: "overhead_10")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var overhead: Exercise = Exercise(index: 9,
+                                                     name: "Overhead Barbell Press",
+                                                     muscles: [" shoulders "],
+                                                     difficulty: " hard ",
+                                                     thumbnails: [#imageLiteral(resourceName: "overhead_0"),#imageLiteral(resourceName: "overhead_1"),#imageLiteral(resourceName: "overhead_2"),#imageLiteral(resourceName: "overhead_3"),#imageLiteral(resourceName: "overhead_4"),#imageLiteral(resourceName: "overhead_5"),#imageLiteral(resourceName: "overhead_6"),#imageLiteral(resourceName: "overhead_7"),#imageLiteral(resourceName: "overhead_8"),#imageLiteral(resourceName: "overhead_9"),#imageLiteral(resourceName: "overhead_10")],
+                                                     duration: 1.5,
+                                                     images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                     isFavourite: false)
     //вертикальная тяга штанги
-    private static let rearUpright: Exercise = Exercise(index: 10, name: "Rear Upright Row", muscles: [" shoulders "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "rearUpright_0"),#imageLiteral(resourceName: "rearUpright_1"),#imageLiteral(resourceName: "rearUpright_2"),#imageLiteral(resourceName: "rearUpright_3"),#imageLiteral(resourceName: "rearUpright_4"),#imageLiteral(resourceName: "rearUpright_5"),#imageLiteral(resourceName: "rearUpright_6"),#imageLiteral(resourceName: "rearUpright_7"),#imageLiteral(resourceName: "rearUpright_8"),#imageLiteral(resourceName: "rearUpright_9"),#imageLiteral(resourceName: "rearUpright_10"),#imageLiteral(resourceName: "rearUpright_11")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var rearUpright: Exercise = Exercise(index: 10,
+                                                        name: "Rear Upright Row",
+                                                        muscles: [" shoulders "],
+                                                        difficulty: " easy ",
+                                                        thumbnails: [#imageLiteral(resourceName: "rearUpright_0"),#imageLiteral(resourceName: "rearUpright_1"),#imageLiteral(resourceName: "rearUpright_2"),#imageLiteral(resourceName: "rearUpright_3"),#imageLiteral(resourceName: "rearUpright_4"),#imageLiteral(resourceName: "rearUpright_5"),#imageLiteral(resourceName: "rearUpright_6"),#imageLiteral(resourceName: "rearUpright_7"),#imageLiteral(resourceName: "rearUpright_8"),#imageLiteral(resourceName: "rearUpright_9"),#imageLiteral(resourceName: "rearUpright_10"),#imageLiteral(resourceName: "rearUpright_11")],
+                                                        duration: 1.5,
+                                                        images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                        isFavourite: false)
     //приседания со штангой
-    private static let barbellSquat: Exercise = Exercise(index: 11, name: "Barbell Squat", muscles: [" quads "], difficulty: " medium ", thumbnails: [#imageLiteral(resourceName: "barbellSquart_0"),#imageLiteral(resourceName: "barbellSquart_1"),#imageLiteral(resourceName: "barbellSquart_2"),#imageLiteral(resourceName: "barbellSquart_3"),#imageLiteral(resourceName: "barbellSquart_4"),#imageLiteral(resourceName: "barbellSquart_5"),#imageLiteral(resourceName: "barbellSquart_6"),#imageLiteral(resourceName: "barbellSquart_7"),#imageLiteral(resourceName: "barbellSquart_8"),#imageLiteral(resourceName: "barbellSquart_9"),#imageLiteral(resourceName: "barbellSquart_10"),#imageLiteral(resourceName: "barbellSquart_11")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var barbellSquat: Exercise = Exercise(index: 11,
+                                                         name: "Barbell Squat",
+                                                         muscles: [" quads "],
+                                                         difficulty: " medium ",
+                                                         thumbnails: [#imageLiteral(resourceName: "barbellSquart_0"),#imageLiteral(resourceName: "barbellSquart_1"),#imageLiteral(resourceName: "barbellSquart_2"),#imageLiteral(resourceName: "barbellSquart_3"),#imageLiteral(resourceName: "barbellSquart_4"),#imageLiteral(resourceName: "barbellSquart_5"),#imageLiteral(resourceName: "barbellSquart_6"),#imageLiteral(resourceName: "barbellSquart_7"),#imageLiteral(resourceName: "barbellSquart_8"),#imageLiteral(resourceName: "barbellSquart_9"),#imageLiteral(resourceName: "barbellSquart_10"),#imageLiteral(resourceName: "barbellSquart_11")],
+                                                         duration: 1.5,
+                                                         images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                         isFavourite: false)
     //жим ногами
-    private static let legPress: Exercise = Exercise(index: 12, name: "Leg Press", muscles: [" quads "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "legPress_0"),#imageLiteral(resourceName: "legPress_1"),#imageLiteral(resourceName: "legPress_2"),#imageLiteral(resourceName: "legPress_3"),#imageLiteral(resourceName: "legPress_4"),#imageLiteral(resourceName: "legPress_5"),#imageLiteral(resourceName: "legPress_6"),#imageLiteral(resourceName: "legPress_7"),#imageLiteral(resourceName: "legPress_8"),#imageLiteral(resourceName: "legPress_9"),#imageLiteral(resourceName: "legPress_10")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var legPress: Exercise = Exercise(index: 12,
+                                                     name: "Leg Press",
+                                                     muscles: [" quads "],
+                                                     difficulty: " easy ",
+                                                     thumbnails: [#imageLiteral(resourceName: "legPress_0"),#imageLiteral(resourceName: "legPress_1"),#imageLiteral(resourceName: "legPress_2"),#imageLiteral(resourceName: "legPress_3"),#imageLiteral(resourceName: "legPress_4"),#imageLiteral(resourceName: "legPress_5"),#imageLiteral(resourceName: "legPress_6"),#imageLiteral(resourceName: "legPress_7"),#imageLiteral(resourceName: "legPress_8"),#imageLiteral(resourceName: "legPress_9"),#imageLiteral(resourceName: "legPress_10")],
+                                                     duration: 1.5,
+                                                     images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                     isFavourite: false)
     //жим лёжа на скамье
-    private static let benchPress: Exercise = Exercise(index: 13, name: "Bench Press", muscles: [" chest "], difficulty: " medium ", thumbnails: [#imageLiteral(resourceName: "benchPress_0"),#imageLiteral(resourceName: "benchPress_1"),#imageLiteral(resourceName: "benchPress_2"),#imageLiteral(resourceName: "benchPress_3"),#imageLiteral(resourceName: "benchPress_4"),#imageLiteral(resourceName: "benchPress_5"),#imageLiteral(resourceName: "benchPress_6"),#imageLiteral(resourceName: "benchPress_7"),#imageLiteral(resourceName: "benchPress_8"),#imageLiteral(resourceName: "benchPress_9")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var benchPress: Exercise = Exercise(index: 13,
+                                                       name: "Bench Press",
+                                                       muscles: [" chest "],
+                                                       difficulty: " medium ",
+                                                       thumbnails: [#imageLiteral(resourceName: "benchPress_0"),#imageLiteral(resourceName: "benchPress_1"),#imageLiteral(resourceName: "benchPress_2"),#imageLiteral(resourceName: "benchPress_3"),#imageLiteral(resourceName: "benchPress_4"),#imageLiteral(resourceName: "benchPress_5"),#imageLiteral(resourceName: "benchPress_6"),#imageLiteral(resourceName: "benchPress_7"),#imageLiteral(resourceName: "benchPress_8"),#imageLiteral(resourceName: "benchPress_9")],
+                                                       duration: 1.5,
+                                                       images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                       isFavourite: false)
     //сведение рук в кроссовере
-    private static let cableCrossover: Exercise = Exercise(index: 14, name: "Cable Crossover", muscles: [" chest "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "cableCrossover_0"),#imageLiteral(resourceName: "cableCrossover_1"),#imageLiteral(resourceName: "cableCrossover_2"),#imageLiteral(resourceName: "cableCrossover_3"),#imageLiteral(resourceName: "cableCrossover_4"),#imageLiteral(resourceName: "cableCrossover_5"),#imageLiteral(resourceName: "cableCrossover_6"),#imageLiteral(resourceName: "cableCrossover_7"),#imageLiteral(resourceName: "cableCrossover_8"),#imageLiteral(resourceName: "cableCrossover_9"),#imageLiteral(resourceName: "cableCrossover_10"),#imageLiteral(resourceName: "cableCrossover_11")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var cableCrossover: Exercise = Exercise(index: 14,
+                                                           name: "Cable Crossover",
+                                                           muscles: [" chest "],
+                                                           difficulty: " easy ",
+                                                           thumbnails: [#imageLiteral(resourceName: "cableCrossover_0"),#imageLiteral(resourceName: "cableCrossover_1"),#imageLiteral(resourceName: "cableCrossover_2"),#imageLiteral(resourceName: "cableCrossover_3"),#imageLiteral(resourceName: "cableCrossover_4"),#imageLiteral(resourceName: "cableCrossover_5"),#imageLiteral(resourceName: "cableCrossover_6"),#imageLiteral(resourceName: "cableCrossover_7"),#imageLiteral(resourceName: "cableCrossover_8"),#imageLiteral(resourceName: "cableCrossover_9"),#imageLiteral(resourceName: "cableCrossover_10"),#imageLiteral(resourceName: "cableCrossover_11")],
+                                                           duration: 1.5,
+                                                           images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                           isFavourite: false)
     //отжимания на брусьях
-    private static let dips: Exercise = Exercise(index: 15, name: "Dips", muscles: [" triceps "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "dips_0"),#imageLiteral(resourceName: "dips_1"),#imageLiteral(resourceName: "dips_2"),#imageLiteral(resourceName: "dips_3"),#imageLiteral(resourceName: "dips_4"),#imageLiteral(resourceName: "dips_5"),#imageLiteral(resourceName: "dips_6"),#imageLiteral(resourceName: "dips_7"),#imageLiteral(resourceName: "dips_8"),#imageLiteral(resourceName: "dips_9")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var dips: Exercise = Exercise(index: 15,
+                                                 name: "Dips",
+                                                 muscles: [" triceps "],
+                                                 difficulty: " easy ",
+                                                 thumbnails: [#imageLiteral(resourceName: "dips_0"),#imageLiteral(resourceName: "dips_1"),#imageLiteral(resourceName: "dips_2"),#imageLiteral(resourceName: "dips_3"),#imageLiteral(resourceName: "dips_4"),#imageLiteral(resourceName: "dips_5"),#imageLiteral(resourceName: "dips_6"),#imageLiteral(resourceName: "dips_7"),#imageLiteral(resourceName: "dips_8"),#imageLiteral(resourceName: "dips_9")],
+                                                 duration: 1.5,
+                                                 images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                 isFavourite: false)
     //подъём туловища на наклонной скамье
-    private static let inclineSitUp: Exercise = Exercise(index: 16, name: "Incline Sit-Up", muscles: [" press "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "inclineSitUp_0"),#imageLiteral(resourceName: "inclineSitUp_1"),#imageLiteral(resourceName: "inclineSitUp_2"),#imageLiteral(resourceName: "inclineSitUp_3"),#imageLiteral(resourceName: "inclineSitUp_4"),#imageLiteral(resourceName: "inclineSitUp_5"),#imageLiteral(resourceName: "inclineSitUp_6"),#imageLiteral(resourceName: "inclineSitUp_7"),#imageLiteral(resourceName: "inclineSitUp_8"),#imageLiteral(resourceName: "inclineSitUp_9"),#imageLiteral(resourceName: "inclineSitUp_10"),#imageLiteral(resourceName: "inclineSitUp_11")], duration: 1.6, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var inclineSitUp: Exercise = Exercise(index: 16,
+                                                         name: "Incline Sit-Up",
+                                                         muscles: [" press "],
+                                                         difficulty: " easy ",
+                                                         thumbnails: [#imageLiteral(resourceName: "inclineSitUp_0"),#imageLiteral(resourceName: "inclineSitUp_1"),#imageLiteral(resourceName: "inclineSitUp_2"),#imageLiteral(resourceName: "inclineSitUp_3"),#imageLiteral(resourceName: "inclineSitUp_4"),#imageLiteral(resourceName: "inclineSitUp_5"),#imageLiteral(resourceName: "inclineSitUp_6"),#imageLiteral(resourceName: "inclineSitUp_7"),#imageLiteral(resourceName: "inclineSitUp_8"),#imageLiteral(resourceName: "inclineSitUp_9"),#imageLiteral(resourceName: "inclineSitUp_10"),#imageLiteral(resourceName: "inclineSitUp_11")],
+                                                         duration: 1.6,
+                                                         images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                         isFavourite: false)
     //подъём ног в тренажёре
-    private static let kneeRaise: Exercise = Exercise(index: 17, name: "Knee Raise On Parallel Bars", muscles: [" press "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "kneeRaise_0"),#imageLiteral(resourceName: "kneeRaise_1"),#imageLiteral(resourceName: "kneeRaise_2"),#imageLiteral(resourceName: "kneeRaise_3"),#imageLiteral(resourceName: "kneeRaise_4"),#imageLiteral(resourceName: "kneeRaise_5"),#imageLiteral(resourceName: "kneeRaise_6"),#imageLiteral(resourceName: "kneeRaise_7"),#imageLiteral(resourceName: "kneeRaise_8"),#imageLiteral(resourceName: "kneeRaise_9"),#imageLiteral(resourceName: "kneeRaise_10"),#imageLiteral(resourceName: "kneeRaise_11")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
+    private static var kneeRaise: Exercise = Exercise(index: 17,
+                                                      name: "Knee Raise On Parallel Bars",
+                                                      muscles: [" press "],
+                                                      difficulty: " easy ",
+                                                      thumbnails: [#imageLiteral(resourceName: "kneeRaise_0"),#imageLiteral(resourceName: "kneeRaise_1"),#imageLiteral(resourceName: "kneeRaise_2"),#imageLiteral(resourceName: "kneeRaise_3"),#imageLiteral(resourceName: "kneeRaise_4"),#imageLiteral(resourceName: "kneeRaise_5"),#imageLiteral(resourceName: "kneeRaise_6"),#imageLiteral(resourceName: "kneeRaise_7"),#imageLiteral(resourceName: "kneeRaise_8"),#imageLiteral(resourceName: "kneeRaise_9"),#imageLiteral(resourceName: "kneeRaise_10"),#imageLiteral(resourceName: "kneeRaise_11")],
+                                                      duration: 1.5,
+                                                      images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                      isFavourite: false)
     //попеременный подъём гантелей на бицепс хватом «молоток»
-    private static let hummerCurl: Exercise = Exercise(index: 18, name: "Alternate Hammer Curl", muscles: [" biceps "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "hummerCurl_0"),#imageLiteral(resourceName: "hummerCurl_1"),#imageLiteral(resourceName: "hummerCurl_2"),#imageLiteral(resourceName: "hummerCurl_3"),#imageLiteral(resourceName: "hummerCurl_4"),#imageLiteral(resourceName: "hummerCurl_5"),#imageLiteral(resourceName: "hummerCurl_6"),#imageLiteral(resourceName: "hummerCurl_7"),#imageLiteral(resourceName: "hummerCurl_8"),#imageLiteral(resourceName: "hummerCurl_9"),#imageLiteral(resourceName: "hummerCurl_10"),#imageLiteral(resourceName: "hummerCurl_11"),#imageLiteral(resourceName: "hummerCurl_12"),#imageLiteral(resourceName: "hummerCurl_13")], duration: 1.7, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
-    //разггибания на трицепс на верхнем блоке
-    private static let triceps: Exercise = Exercise(index: 19, name: "Triceps Pushdown", muscles: [" triceps "], difficulty: " easy ", thumbnails: [#imageLiteral(resourceName: "tricepsPushdown_0"),#imageLiteral(resourceName: "tricepsPushdown_1"),#imageLiteral(resourceName: "tricepsPushdown_2"),#imageLiteral(resourceName: "tricepsPushdown_3"),#imageLiteral(resourceName: "tricepsPushdown_4"),#imageLiteral(resourceName: "tricepsPushdown_5"),#imageLiteral(resourceName: "tricepsPushdown_6"),#imageLiteral(resourceName: "tricepsPushdown_7"),#imageLiteral(resourceName: "tricepsPushdown_8"),#imageLiteral(resourceName: "tricepsPushdown_9")], duration: 1.5, images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")])
-
+    private static var hummerCurl: Exercise = Exercise(index: 18,
+                                                       name: "Alternate Hammer Curl",
+                                                       muscles: [" biceps "],
+                                                       difficulty: " easy ",
+                                                       thumbnails: [#imageLiteral(resourceName: "hummerCurl_0"),#imageLiteral(resourceName: "hummerCurl_1"),#imageLiteral(resourceName: "hummerCurl_2"),#imageLiteral(resourceName: "hummerCurl_3"),#imageLiteral(resourceName: "hummerCurl_4"),#imageLiteral(resourceName: "hummerCurl_5"),#imageLiteral(resourceName: "hummerCurl_6"),#imageLiteral(resourceName: "hummerCurl_7"),#imageLiteral(resourceName: "hummerCurl_8"),#imageLiteral(resourceName: "hummerCurl_9"),#imageLiteral(resourceName: "hummerCurl_10"),#imageLiteral(resourceName: "hummerCurl_11"),#imageLiteral(resourceName: "hummerCurl_12"),#imageLiteral(resourceName: "hummerCurl_13")],
+                                                       duration: 1.7,
+                                                       images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                       isFavourite: false)
+    //разгибания на трицепс на верхнем блоке
+    private static var triceps: Exercise = Exercise(index: 19,
+                                                    name: "Triceps Pushdown",
+                                                    muscles: [" triceps "],
+                                                    difficulty: " easy ",
+                                                    thumbnails: [#imageLiteral(resourceName: "tricepsPushdown_0"),#imageLiteral(resourceName: "tricepsPushdown_1"),#imageLiteral(resourceName: "tricepsPushdown_2"),#imageLiteral(resourceName: "tricepsPushdown_3"),#imageLiteral(resourceName: "tricepsPushdown_4"),#imageLiteral(resourceName: "tricepsPushdown_5"),#imageLiteral(resourceName: "tricepsPushdown_6"),#imageLiteral(resourceName: "tricepsPushdown_7"),#imageLiteral(resourceName: "tricepsPushdown_8"),#imageLiteral(resourceName: "tricepsPushdown_9")],
+                                                    duration: 1.5,
+                                                    images: [#imageLiteral(resourceName: "ellipsBig_0"),#imageLiteral(resourceName: "ellipsBig_1"),#imageLiteral(resourceName: "ellipsBig_2"),#imageLiteral(resourceName: "ellipsBig_3"),#imageLiteral(resourceName: "ellipsBig_4"),#imageLiteral(resourceName: "ellipsBig_5"),#imageLiteral(resourceName: "ellipsBig_6"),#imageLiteral(resourceName: "ellipsBig_7"),#imageLiteral(resourceName: "ellipsBig_8"),#imageLiteral(resourceName: "ellipsBig_9"),#imageLiteral(resourceName: "ellipsBig_10"),#imageLiteral(resourceName: "ellipsBig_11")],
+                                                    isFavourite: false)
+    
+    //add to favorites
+    static func addToFavourites(by index: Int) {
+        switch index {
+        case 0:
+            Exercises.ellipticalMachine.isFavourite = true
+        case 1:
+            Exercises.bikeMachine.isFavourite = true
+        case 2:
+            Exercises.runningMachine.isFavourite = true
+        case 3:
+            Exercises.behindTheNeck.isFavourite = true
+        case 4:
+            Exercises.bentOver.isFavourite = true
+        case 5:
+            Exercises.deadlift.isFavourite = true
+        case 6:
+            Exercises.pullUp.isFavourite = true
+        case 7:
+            Exercises.behindPress.isFavourite = true
+        case 8:
+            Exercises.dumbbell.isFavourite = true
+        case 9:
+            Exercises.overhead.isFavourite = true
+        case 10:
+            Exercises.rearUpright.isFavourite = true
+        case 11:
+            Exercises.barbellSquat.isFavourite = true
+        case 12:
+            Exercises.legPress.isFavourite = true
+        case 13:
+            Exercises.benchPress.isFavourite = true
+        case 14:
+            Exercises.cableCrossover.isFavourite = true
+        case 15:
+            Exercises.dips.isFavourite = true
+        case 16:
+            Exercises.inclineSitUp.isFavourite = true
+        case 17:
+            Exercises.kneeRaise.isFavourite = true
+        case 18:
+            Exercises.hummerCurl.isFavourite = true
+        case 19:
+            Exercises.triceps.isFavourite = true
+        default:
+            break
+        }
+    }
+    
+    //remove from favorites
+    static func removeFromFavourites(by index: Int) {
+        switch index {
+        case 0:
+            Exercises.ellipticalMachine.isFavourite = false
+        case 1:
+            Exercises.bikeMachine.isFavourite = false
+        case 2:
+            Exercises.runningMachine.isFavourite = false
+        case 3:
+            Exercises.behindTheNeck.isFavourite = false
+        case 4:
+            Exercises.bentOver.isFavourite = false
+        case 5:
+            Exercises.deadlift.isFavourite = false
+        case 6:
+            Exercises.pullUp.isFavourite = false
+        case 7:
+            Exercises.behindPress.isFavourite = false
+        case 8:
+            Exercises.dumbbell.isFavourite = false
+        case 9:
+            Exercises.overhead.isFavourite = false
+        case 10:
+            Exercises.rearUpright.isFavourite = false
+        case 11:
+            Exercises.barbellSquat.isFavourite = false
+        case 12:
+            Exercises.legPress.isFavourite = false
+        case 13:
+            Exercises.benchPress.isFavourite = false
+        case 14:
+            Exercises.cableCrossover.isFavourite = false
+        case 15:
+            Exercises.dips.isFavourite = false
+        case 16:
+            Exercises.inclineSitUp.isFavourite = false
+        case 17:
+            Exercises.kneeRaise.isFavourite = false
+        case 18:
+            Exercises.hummerCurl.isFavourite = false
+        case 19:
+            Exercises.triceps.isFavourite = false
+        default:
+            break
+        }
+    }
+    
     //возвращает название упражнения по индексу
     static func getName(by index: Int) -> String {
         var name = String()
