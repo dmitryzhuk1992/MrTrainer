@@ -7,27 +7,42 @@
 //
 
 import UIKit
+import CoreData
 
 class ExercisesTableViewController: UITableViewController {
     
-    var exercises = Exercises()
-    var namesOfExercises = [String]()
-    var namesOfThumbnails = [[String]]()
-  
-    var thumbnails = [UIImage]()
-    var duration = Double()
+    var fetchedResultsController: NSFetchedResultsController<Exercise> = CoreDataManager.fetchedResultsController(entityName: "Exercise",
+                                                                                                                  keyForSort: "identifier",
+                                                                                                                  predicate: nil) as! NSFetchedResultsController<Exercise>
+    var showFavourites = Bool()
     
-    var textForExercises = [String]()
-    var textForExercise = Dictionary<Int,[String]>()
-    
-    var presentFavourites = Bool()
+    var numberOfRows = Int()
     
     @IBAction func favouritesButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
-            presentFavourites = true
+            showFavourites = true
+            navigationItem.title = "Your Favourites"
+            fetchedResultsController = CoreDataManager.fetchedResultsController(entityName: "Exercise",
+                                                                                keyForSort: "identifier",
+                                                                                predicate: "isFavourite == true") as! NSFetchedResultsController<Exercise>
         } else {
-            presentFavourites = false
+            showFavourites = false
+            navigationItem.title = "All Exercises"
+            fetchedResultsController = CoreDataManager.fetchedResultsController(entityName: "Exercise",
+                                                                                keyForSort: "identifier",
+                                                                                predicate: nil) as! NSFetchedResultsController<Exercise>
+        }
+        performFetch()
+        tableView.reloadData()
+    }
+    
+    //executes the fetch request
+    private func performFetch() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error perform fetch: \(error.localizedDescription)")
         }
     }
     
@@ -35,26 +50,26 @@ class ExercisesTableViewController: UITableViewController {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
         
+        performFetch()
+        
         //customization navigation bar
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0x21/0xFF, green: 0x21/0xFF, blue: 0x21/0xFF, alpha: 1.0)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.tintColor = .white
+//        navigationController?.navigationBar.barTintColor = UIColor(red: 0x21/0xFF, green: 0x21/0xFF, blue: 0x21/0xFF, alpha: 1.0)
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+//        navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 4.0
         navigationController?.navigationBar.layer.shadowOpacity = 1.0
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        //navigationController?.navigationBar.layer.masksToBounds = false
         
         tableView.backgroundColor = UIColor(red: 0x30/0xFF, green: 0x30/0xFF, blue: 0x30/0xFF, alpha: 1.0)
         tableView.decelerationRate = UIScrollViewDecelerationRateFast
         tableView.separatorStyle = .none
-        
-        readFromFile()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         navigationController?.hidesBarsOnSwipe = true
     }
 
@@ -66,89 +81,96 @@ class ExercisesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Exercises.numberOfExercises
+        if let sections = fetchedResultsController.sections {
+            return sections[section].numberOfObjects
+        } else {
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ExercisesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExercisesTableViewCell
 
-        //name label
-        cell.nameLabel.text = Exercises.getName(by: indexPath.row)
+        //change color for even cells
+        cell.setColorForRowAt(index: indexPath.row)
+        
+        //get data for exercise
+        let exercise = fetchedResultsController.object(at: indexPath)
+
+        cell.nameLabel.text = exercise.title
+        cell.difficultyLabel.text = exercise.difficulty
+        
+        //REWRITE
+        let musclesLabelArray = [cell.musclesLabel1, cell.musclesLabel2, cell.musclesLabel3]
+        if let muscles = exercise.muscles {
+            for i in 0..<muscles.count {
+                musclesLabelArray[i]!.text = muscles[i]
+                musclesLabelArray[i]!.isHidden = false
+            }
+        }
         
         //in global queue
         DispatchQueue.global(qos: .userInteractive).async {
             //thumbnails
-            self.thumbnails = Exercises.getThumbnails(by: indexPath.row)
-            self.duration = Exercises.getDuration(by: indexPath.row)
-            let animatedThumbnail = UIImage.animatedImage(with: self.thumbnails, duration: self.duration)
+            guard let thumbnails = exercise.thumbnails else { return }
+            let duration = exercise.duration
+            let animatedThumbnail = UIImage.animatedImage(with: thumbnails, duration: duration)
             //in main queue
             DispatchQueue.main.async {
                 cell.thumbnailImageView.image = animatedThumbnail
             }
         }
         
-        //difficulty label
-        let difficulty = Exercises.getDifficulty(by: indexPath.row)
-        cell.difficultyLabel.text = difficulty
-        
-        //muscles labels
-        let musclesLabelArray = [cell.musclesLabel1, cell.musclesLabel2, cell.musclesLabel3]
-        let muscles = Exercises.getMuscles(by: indexPath.row)
-        for i in 0..<muscles.count {
-            musclesLabelArray[i]!.text = muscles[i]
-            musclesLabelArray[i]!.isHidden = false
-        }
-        
         return cell
-    }
-    
-    //not used
-    func getDataForExercise(with index: Int) -> (String, String, [String]) {
-        let name: String = Exercises.getName(by: index)
-        let difficulty: String = Exercises.getDifficulty(by: index)
-        let muscles: [String] = Exercises.getMuscles(by: index)
-        
-        let data = (name, difficulty, muscles)
-        
-        return data
     }
     
     //add to favourites
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let addToFavourites = UITableViewRowAction(style: .default, title: "Add To Favourites") { (action, indexPath) in
-            Exercises.addToFavourites(by: indexPath.row)
-        }
-        addToFavourites.backgroundColor = UIColor(red: 0xFF/0xFF, green: 0xEB/0xFF, blue: 0x3B/0xFF, alpha: 1.0)
-        return [addToFavourites]
-    }
-
-    //prepare for segue to ExerciseDetailViewController
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailSegue" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let destinationVC = segue.destination as! ExerciseDetailViewController
-                destinationVC.name = Exercises.getName(by: indexPath.row)
-                destinationVC.images = Exercises.getImages(by: 0)
-                destinationVC.duration = Exercises.getDuration(by: indexPath.row)
-                destinationVC.text = textForExercise[indexPath.row]!
+        
+        let exercise = fetchedResultsController.object(at: indexPath)
+        var favouriteAction = UITableViewRowAction()
+    
+        if showFavourites == false {
+            favouriteAction = UITableViewRowAction(style: .default, title: "Add To Favourites") { (action, indexPath) in
+                exercise.isFavourite = true
+                CoreDataManager.saveContext()
+            }
+            favouriteAction.backgroundColor = UIColor(red: 0xFF/0xFF, green: 0xC1/0xFF, blue: 0x07/0xFF, alpha: 1.0)
+        } else {
+            favouriteAction = UITableViewRowAction(style: .default, title: "Remove From Favourites") { (action, indexPath) in
+                exercise.isFavourite = false
+                CoreDataManager.saveContext()
+                self.performFetch()
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
+
+        return [favouriteAction]
     }
     
-    //read text for exercise from file
-    private func readFromFile() {
-        DispatchQueue.global(qos: .default).async {
-            if let path = Bundle.main.path(forResource: "TextForExercises", ofType: "txt") {
-                if let text = try? String(contentsOfFile: path) {
-                    self.textForExercises = text.components(separatedBy: "\n<>\n")
-                    for (index, item) in self.textForExercises.enumerated() {
-                        let textForExercise = item.components(separatedBy: "\n\n")
-                        self.textForExercise[index] = textForExercise
-                    }
-                    //print(self.textForExercise)
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? ExercisesTableViewCell
+        cell?.backView.backgroundColor = UIColor(red: 0x30/0xFF, green: 0x30/0xFF, blue: 0x30/0xFF, alpha: 1.0)
+    }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? ExercisesTableViewCell
+
+        //change color for even cells
+        cell?.setColorForRowAt(index: indexPath.row)
+    }
+    
+    //prepare for segue to ExerciseDetailViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueToExercise" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                if let dvc = segue.destination as? ExerciseDetailViewController {
+                    let exercise = fetchedResultsController.object(at: indexPath)
+                    dvc.exercise = exercise
                 }
             }
         }
     }
+
     
 }

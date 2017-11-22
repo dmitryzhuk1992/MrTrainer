@@ -19,6 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //status bar is appear
         UIApplication.shared.isStatusBarHidden = false
         
+        //Data initialization
+        if !UserDefaults.standard.bool(forKey: "dataInitialized") {
+            initData()
+        }
+
+        //customization navigation bar
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0x21/0xFF, green: 0x21/0xFF, blue: 0x21/0xFF, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().tintColor = .white
+        
         return true
     }
 
@@ -42,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        CoreDataManager.saveContext()
     }
 
 

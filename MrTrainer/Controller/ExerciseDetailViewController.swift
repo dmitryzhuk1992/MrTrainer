@@ -15,7 +15,8 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var name = String()
+    var exercise: Exercise?
+    
     var images = [UIImage]()
     var duration = Double()
     var muscles = [String]()
@@ -25,6 +26,12 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        guard let exercise = exercise else { return }
+        title = exercise.title
+        imageView.image = UIImage.animatedImage(with: exercise.images!, duration: exercise.duration)
+        text = exercise.text!
+        textView.text = text[0]
+        
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
@@ -34,14 +41,8 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
         
         pageControl.numberOfPages = text.count
         pageControl.currentPage = 0
-        
-        title = name
-        
-        imageView.image = UIImage.animatedImage(with: images, duration: duration)
-        
+
         view.backgroundColor = UIColor(red: 0x42/0xFF, green: 0x42/0xFF, blue: 0x42/0xFF, alpha: 1.0)
-        
-        textView.text = text[0]
     }
     
     override func viewWillAppear(_ animated: Bool) {

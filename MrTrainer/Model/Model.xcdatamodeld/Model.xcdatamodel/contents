@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Exercise" representedClassName="Exercise" syncable="YES">
+        <attribute name="difficulty" attributeType="String" syncable="YES"/>
+        <attribute name="duration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="identifier" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="images" attributeType="Transformable" customClassName="[UIImage]" syncable="YES"/>
+        <attribute name="isFavourite" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="muscles" attributeType="Transformable" customClassName="[String]" syncable="YES"/>
+        <attribute name="text" attributeType="Transformable" customClassName="[String]" syncable="YES"/>
+        <attribute name="thumbnails" attributeType="Transformable" customClassName="[UIImage]" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="program" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Program" inverseName="exercise" inverseEntity="Program" syncable="YES"/>
+    </entity>
+    <entity name="Program" representedClassName="Program" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" attributeType="Transformable" customClassName="UIImage" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="exercise" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="program" inverseEntity="Exercise" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Exercise" positionX="-344" positionY="-27" width="128" height="195"/>
+        <element name="Program" positionX="-18" positionY="9" width="128" height="120"/>
+    </elements>
+</model>
