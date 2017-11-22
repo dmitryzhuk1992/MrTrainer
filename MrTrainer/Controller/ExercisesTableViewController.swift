@@ -11,9 +11,10 @@ import CoreData
 
 class ExercisesTableViewController: UITableViewController {
     
-    var fetchedResultsController: NSFetchedResultsController<Exercise> = CoreDataManager.fetchedResultsController(entityName: "Exercise",
-                                                                                                                  keyForSort: "identifier",
-                                                                                                                  predicate: nil) as! NSFetchedResultsController<Exercise>
+    var fetchedResultsController: NSFetchedResultsController<Exercise> =
+        CoreDataManager.fetchedResultsController(entityName: "Exercise",
+                                                 keyForSort: "identifier",
+                                                 predicate: nil) as! NSFetchedResultsController<Exercise>
     var showFavourites = Bool()
     
     var numberOfRows = Int()
@@ -41,8 +42,8 @@ class ExercisesTableViewController: UITableViewController {
     private func performFetch() {
         do {
             try fetchedResultsController.performFetch()
-        } catch {
-            print("Error perform fetch: \(error.localizedDescription)")
+        } catch let error as NSError {
+            print("Error fetch perform: \(error.localizedDescription)")
         }
     }
     
@@ -53,9 +54,6 @@ class ExercisesTableViewController: UITableViewController {
         performFetch()
         
         //customization navigation bar
-//        navigationController?.navigationBar.barTintColor = UIColor(red: 0x21/0xFF, green: 0x21/0xFF, blue: 0x21/0xFF, alpha: 1.0)
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-//        navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         navigationController?.navigationBar.layer.shadowRadius = 4.0
@@ -69,7 +67,6 @@ class ExercisesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         navigationController?.hidesBarsOnSwipe = true
     }
 
@@ -98,16 +95,8 @@ class ExercisesTableViewController: UITableViewController {
         let exercise = fetchedResultsController.object(at: indexPath)
 
         cell.nameLabel.text = exercise.title
-        cell.difficultyLabel.text = exercise.difficulty
-        
-        //REWRITE
-        let musclesLabelArray = [cell.musclesLabel1, cell.musclesLabel2, cell.musclesLabel3]
-        if let muscles = exercise.muscles {
-            for i in 0..<muscles.count {
-                musclesLabelArray[i]!.text = muscles[i]
-                musclesLabelArray[i]!.isHidden = false
-            }
-        }
+        cell.difficultyLabel.text = " \(exercise.difficulty ?? "default") "
+        cell.musclesLabel.text = exercise.muscles?.joined(separator: ",")
         
         //in global queue
         DispatchQueue.global(qos: .userInteractive).async {
@@ -133,13 +122,23 @@ class ExercisesTableViewController: UITableViewController {
         if showFavourites == false {
             favouriteAction = UITableViewRowAction(style: .default, title: "Add To Favourites") { (action, indexPath) in
                 exercise.isFavourite = true
-                CoreDataManager.saveContext()
+                //CoreDataManager.saveContext()
+                do {
+                    try self.fetchedResultsController.managedObjectContext.save()
+                } catch let error as NSError {
+                    print("Can't saved context: \(error.localizedDescription)")
+                }
             }
             favouriteAction.backgroundColor = UIColor(red: 0xFF/0xFF, green: 0xC1/0xFF, blue: 0x07/0xFF, alpha: 1.0)
         } else {
             favouriteAction = UITableViewRowAction(style: .default, title: "Remove From Favourites") { (action, indexPath) in
                 exercise.isFavourite = false
-                CoreDataManager.saveContext()
+                //CoreDataManager.saveContext()
+                do {
+                    try self.fetchedResultsController.managedObjectContext.save()
+                } catch let error as NSError {
+                    print("Can't saved context: \(error.localizedDescription)")
+                }
                 self.performFetch()
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
@@ -155,12 +154,11 @@ class ExercisesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? ExercisesTableViewCell
-
         //change color for even cells
         cell?.setColorForRowAt(index: indexPath.row)
     }
     
-    //prepare for segue to ExerciseDetailViewController
+    // MARK: - Prepare For Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SegueToExercise" {
             if let indexPath = self.tableView.indexPathForSelectedRow {

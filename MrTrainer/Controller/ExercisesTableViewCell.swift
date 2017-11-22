@@ -14,9 +14,7 @@ class ExercisesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var musclesLabel1: UILabel!
-    @IBOutlet weak var musclesLabel2: UILabel!
-    @IBOutlet weak var musclesLabel3: UILabel!
+    @IBOutlet weak var musclesLabel: UILabel!
     @IBOutlet weak var difficultyLabel: UILabel!
     
     override func prepareForReuse() {
@@ -55,21 +53,7 @@ class ExercisesTableViewCell: UITableViewCell {
         difficultyLabel.layer.cornerRadius = 2
         difficultyLabel.clipsToBounds = true
         difficultyLabel.isHidden = false
-        
-        //muscles labels
-        musclesLabel1.isHidden = true
-        musclesLabel2.isHidden = true
-        musclesLabel3.isHidden = true
-        musclesLabel1.backgroundColor = .gray
-        musclesLabel2.backgroundColor = .gray
-        musclesLabel3.backgroundColor = .gray
-        musclesLabel1.layer.cornerRadius = 2
-        musclesLabel1.clipsToBounds = true
-        musclesLabel2.layer.cornerRadius = 2
-        musclesLabel2.clipsToBounds = true
-        musclesLabel3.layer.cornerRadius = 2
-        musclesLabel3.clipsToBounds = true
-        
+
         //selectedBackgroundView?.backgroundColor = UIColor(red: 0x03/0xFF, green: 0xA9/0xFF, blue: 0xF4/0xFF, alpha: 1.0)
         
     }

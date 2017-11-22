@@ -14,6 +14,7 @@
     </entity>
     <entity name="Program" representedClassName="Program" syncable="YES">
         <attribute name="cost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="forMuscles" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="identifier" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" attributeType="Transformable" customClassName="UIImage" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
@@ -21,6 +22,6 @@
     </entity>
     <elements>
         <element name="Exercise" positionX="-344" positionY="-27" width="128" height="195"/>
-        <element name="Program" positionX="-18" positionY="9" width="128" height="120"/>
+        <element name="Program" positionX="-18" positionY="9" width="128" height="133"/>
     </elements>
 </model>
