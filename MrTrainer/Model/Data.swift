@@ -311,51 +311,69 @@ func initData() {
                     "3. This is the text for 1 exercise! 3 str.",
                     "4. This is the text for 1 exercise! 4 str."]
     
+    //для начинающих
     let forBeginers: Program = Program()
     forBeginers.identifier = 0
     forBeginers.title = "For Beginers"
+    forBeginers.forMuscles = ["quads"]
     forBeginers.image = #imageLiteral(resourceName: "forBeginers")
     forBeginers.cost = "FREE"
-    forBeginers.addToExercise(ellipticalMachine)
-    forBeginers.addToExercise(bikeMachine)
-    forBeginers.addToExercise(runningMachine)
     
+    forBeginers.addToExercises(bikeMachine)
+    forBeginers.addToExercises(legPress)
+    forBeginers.addToExercises(barbellSquat)
+    
+    forBeginers.addToExercises(inclineSitUp)
+    forBeginers.addToExercises(kneeRaise)
+    
+    forBeginers.addToExercises(dips)
+    forBeginers.addToExercises(triceps)
+    
+    forBeginers.addToExercises(hummerCurl)
+    
+    //для снижения веса
     let forWeightLoss: Program = Program()
     forWeightLoss.identifier = 1
     forWeightLoss.title = "For Weight Loss"
     forWeightLoss.image = #imageLiteral(resourceName: "forWeightLoss")
     forWeightLoss.cost = "FREE"
     
+    //общеукрепляющая
     let general: Program = Program()
     general.identifier = 2
     general.title = "General"
     general.image = #imageLiteral(resourceName: "general")
     general.cost = "FREE"
     
+    //упругие ягодицы
     let elasticButtocks: Program = Program()
     elasticButtocks.identifier = 3
     elasticButtocks.title = "Elastic Buttocks"
     elasticButtocks.image = #imageLiteral(resourceName: "elasticButtocks")
     elasticButtocks.cost = "FREE"
     
+    //для профессионалов
     let forProfessionals: Program = Program()
     forProfessionals.identifier = 4
     forProfessionals.title = "For Professionals"
     forProfessionals.image = #imageLiteral(resourceName: "forProfessionals")
     forProfessionals.cost = "FREE"
     
+    //изящная фигура
     let neatFigure: Program = Program()
     neatFigure.identifier = 5
     neatFigure.title = "Neat Figure"
     neatFigure.image = #imageLiteral(resourceName: "neatFigure")
     neatFigure.cost = "FREE"
     
+    //рельефный пресс
     let sixpackAbs: Program = Program()
     sixpackAbs.identifier = 6
     sixpackAbs.title = "Six-pack Abs"
     sixpackAbs.image = #imageLiteral(resourceName: "sixpackAbs")
     sixpackAbs.cost = "FREE"
     
+    //для бодибилдеров
     let forBodybuilders: Program = Program()
     forBodybuilders.identifier = 7
     forBodybuilders.title = "For Bodybuilders"

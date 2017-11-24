@@ -14,16 +14,40 @@ class ProgramDetailTableViewController: UITableViewController {
     
     var program: Program!
     var exercises = [Exercise]()
+    
+    var mainMuscles = Set<String>()
+    var exercisesForMuscle = [[Exercise]]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
         
-        if let exercises = program.exercise?.allObjects {
+        headerImage.image = program.image
+        
+        //get data for exercises
+        if let exercises = program.exercises?.allObjects {
             self.exercises = exercises as! [Exercise]
         }
         
-        headerImage.image = program.image
+        //get group muscles
+        exercises.forEach { (exercise) in
+            if let mainMuscle = exercise.muscles?.first {
+                mainMuscles.insert(mainMuscle)
+            }
+        }
+        
+        var i = 0
+        mainMuscles.forEach { (muscle) in
+            var subArrayForMuscle = [Exercise]()
+            for exercise in exercises {
+                if muscle == exercise.muscles?.first {
+                    subArrayForMuscle.append(exercise)
+                }
+            }
+            exercisesForMuscle.append(subArrayForMuscle)
+            i += 1
+        }
 
         //customization navigation bar
         navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
@@ -42,12 +66,17 @@ class ProgramDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return mainMuscles.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let arrayOfMainMuscles = Array(mainMuscles)
+        return arrayOfMainMuscles[section]
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return program.exercise!.count
+        return exercisesForMuscle[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +86,7 @@ class ProgramDetailTableViewController: UITableViewController {
         cell.setColorForRowAt(index: indexPath.row)
         
         //get data for program
-        let exercise = exercises[indexPath.row]
+        let exercise = exercisesForMuscle[indexPath.section][indexPath.row]
         
         cell.nameLabel.text = exercise.title
         cell.difficultyLabel.text = " \(exercise.difficulty ?? "default") "
@@ -90,10 +119,10 @@ class ProgramDetailTableViewController: UITableViewController {
     }
     
     //header
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.contentView.addSubview(headerImage)
-    }
+//    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        let header = view as! UITableViewHeaderFooterView
+//        header.contentView.addSubview(headerImage)
+//    }
     
     // MARK: - Prepare For Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

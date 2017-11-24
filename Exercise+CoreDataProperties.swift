@@ -2,7 +2,7 @@
 //  Exercise+CoreDataProperties.swift
 //  MrTrainer
 //
-//  Created by Dmitriy Zhuk on 20.11.17.
+//  Created by Dmitriy Zhuk on 23.11.17.
 //  Copyright © 2017 Dmitriy Zhuk. All rights reserved.
 //
 //
@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 import UIKit
-
 
 extension Exercise {
 
@@ -27,23 +26,23 @@ extension Exercise {
     @NSManaged public var text: [String]?
     @NSManaged public var thumbnails: [UIImage]?
     @NSManaged public var title: String?
-    @NSManaged public var program: NSSet?
+    @NSManaged public var programs: NSSet?
 
 }
 
-// MARK: Generated accessors for program
+// MARK: Generated accessors for programs
 extension Exercise {
 
-    @objc(addProgramObject:)
-    @NSManaged public func addToProgram(_ value: Program)
+    @objc(addProgramsObject:)
+    @NSManaged public func addToPrograms(_ value: Program)
 
-    @objc(removeProgramObject:)
-    @NSManaged public func removeFromProgram(_ value: Program)
+    @objc(removeProgramsObject:)
+    @NSManaged public func removeFromPrograms(_ value: Program)
 
-    @objc(addProgram:)
-    @NSManaged public func addToProgram(_ values: NSSet)
+    @objc(addPrograms:)
+    @NSManaged public func addToPrograms(_ values: NSSet)
 
-    @objc(removeProgram:)
-    @NSManaged public func removeFromProgram(_ values: NSSet)
+    @objc(removePrograms:)
+    @NSManaged public func removeFromPrograms(_ values: NSSet)
 
 }

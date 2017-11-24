@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		002F2779567F157778391B7A /* Pods_MrTrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996F674F95678B6071BF8798 /* Pods_MrTrainer.framework */; };
 		490F47141FBAE96A007D16E6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F47131FBAE96A007D16E6 /* TabBarViewController.swift */; };
 		490F47161FBB0922007D16E6 /* TextForExercises.txt in Resources */ = {isa = PBXBuildFile; fileRef = 490F47151FBB0922007D16E6 /* TextForExercises.txt */; };
 		490F47B31FC19C75007D16E6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 490F47B11FC19C75007D16E6 /* Model.xcdatamodeld */; };
 		490F47B51FC2BA6D007D16E6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F47B41FC2BA6D007D16E6 /* CoreDataManager.swift */; };
 		490F47BA1FC2BBDC007D16E6 /* Exercise+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F47B61FC2BBDC007D16E6 /* Exercise+CoreDataClass.swift */; };
 		490F47BC1FC2BBDC007D16E6 /* Program+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F47B81FC2BBDC007D16E6 /* Program+CoreDataClass.swift */; };
+		49185D9E1FC76D300019D06F /* PersonalTrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49185D9D1FC76D300019D06F /* PersonalTrainerViewController.swift */; };
+		49185DA11FC7702A0019D06F /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49185D9F1FC770290019D06F /* CustomView.swift */; };
+		49185DA21FC7702A0019D06F /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49185DA01FC770290019D06F /* CustomView.xib */; };
 		4946C15A1FA1F14F009157C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946C1591FA1F14F009157C3 /* AppDelegate.swift */; };
 		4946C15F1FA1F150009157C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4946C15D1FA1F150009157C3 /* Main.storyboard */; };
 		4946C1641FA1F150009157C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4946C1621FA1F150009157C3 /* LaunchScreen.storyboard */; };
@@ -21,7 +25,6 @@
 		494EF4BF1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EF4BE1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift */; };
 		499D79441FC35F73001444B0 /* ProgramsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D79431FC35F73001444B0 /* ProgramsTableViewController.swift */; };
 		499D79481FC35FDD001444B0 /* ProgramsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D79471FC35FDD001444B0 /* ProgramsTableViewCell.swift */; };
-		499D794C1FC48308001444B0 /* LevelImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D794B1FC48308001444B0 /* LevelImage.swift */; };
 		49BFFE831FA76B7C007B6EA0 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BFFE821FA76B7C007B6EA0 /* Data.swift */; };
 		49FE7ADC1FC5C93E0036660C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49FE7ADB1FC5C93E0036660C /* Assets.xcassets */; };
 		49FE7ADE1FC604D30036660C /* ProgramDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE7ADD1FC604D30036660C /* ProgramDetailTableViewController.swift */; };
@@ -30,12 +33,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00840B8909037828BD66A18F /* Pods-MrTrainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MrTrainer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MrTrainer/Pods-MrTrainer.debug.xcconfig"; sourceTree = "<group>"; };
+		12817F6E0C180CDEF6411FE4 /* Pods-MrTrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MrTrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-MrTrainer/Pods-MrTrainer.release.xcconfig"; sourceTree = "<group>"; };
 		490F47131FBAE96A007D16E6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		490F47151FBB0922007D16E6 /* TextForExercises.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TextForExercises.txt; sourceTree = "<group>"; };
 		490F47B21FC19C75007D16E6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		490F47B41FC2BA6D007D16E6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		490F47B61FC2BBDC007D16E6 /* Exercise+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exercise+CoreDataClass.swift"; sourceTree = "<group>"; };
 		490F47B81FC2BBDC007D16E6 /* Program+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Program+CoreDataClass.swift"; sourceTree = "<group>"; };
+		49185D9D1FC76D300019D06F /* PersonalTrainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTrainerViewController.swift; sourceTree = "<group>"; };
+		49185D9F1FC770290019D06F /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		49185DA01FC770290019D06F /* CustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
 		4946C1561FA1F14F009157C3 /* MrTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MrTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4946C1591FA1F14F009157C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4946C15E1FA1F150009157C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,12 +54,12 @@
 		494EF4BE1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewController.swift; sourceTree = "<group>"; };
 		499D79431FC35F73001444B0 /* ProgramsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsTableViewController.swift; sourceTree = "<group>"; };
 		499D79471FC35FDD001444B0 /* ProgramsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsTableViewCell.swift; sourceTree = "<group>"; };
-		499D794B1FC48308001444B0 /* LevelImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelImage.swift; sourceTree = "<group>"; };
 		49BFFE821FA76B7C007B6EA0 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		49FE7ADB1FC5C93E0036660C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49FE7ADD1FC604D30036660C /* ProgramDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDetailTableViewController.swift; sourceTree = "<group>"; };
 		49FF89E21FC3131200BF1C2A /* Program+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Program+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		49FF89E31FC3131200BF1C2A /* Exercise+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exercise+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		996F674F95678B6071BF8798 /* Pods_MrTrainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MrTrainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +67,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				002F2779567F157778391B7A /* Pods_MrTrainer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		003E0EF59EB0C586B6C7B846 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				00840B8909037828BD66A18F /* Pods-MrTrainer.debug.xcconfig */,
+				12817F6E0C180CDEF6411FE4 /* Pods-MrTrainer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		490F46C51FB4694B007D16E6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				4946C15D1FA1F150009157C3 /* Main.storyboard */,
-				499D794B1FC48308001444B0 /* LevelImage.swift */,
+				49185D9F1FC770290019D06F /* CustomView.swift */,
+				49185DA01FC770290019D06F /* CustomView.xib */,
 				4946C1621FA1F150009157C3 /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -88,6 +107,7 @@
 		490F46C71FB4696D007D16E6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				49185D9D1FC76D300019D06F /* PersonalTrainerViewController.swift */,
 				490F47131FBAE96A007D16E6 /* TabBarViewController.swift */,
 				494EF4BE1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift */,
 				4946C16D1FA20E75009157C3 /* ExercisesTableViewCell.swift */,
@@ -119,6 +139,8 @@
 				490F47B81FC2BBDC007D16E6 /* Program+CoreDataClass.swift */,
 				4946C1581FA1F14F009157C3 /* MrTrainer */,
 				4946C1571FA1F14F009157C3 /* Products */,
+				003E0EF59EB0C586B6C7B846 /* Pods */,
+				EB0DCFD73F6FEDF934F248FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +163,14 @@
 			path = MrTrainer;
 			sourceTree = "<group>";
 		};
+		EB0DCFD73F6FEDF934F248FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				996F674F95678B6071BF8798 /* Pods_MrTrainer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -148,9 +178,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4946C1681FA1F150009157C3 /* Build configuration list for PBXNativeTarget "MrTrainer" */;
 			buildPhases = (
+				1E5024B60C57B9911E08A270 /* [CP] Check Pods Manifest.lock */,
 				4946C1521FA1F14F009157C3 /* Sources */,
 				4946C1531FA1F14F009157C3 /* Frameworks */,
 				4946C1541FA1F14F009157C3 /* Resources */,
+				DBCF1780B39566B267085643 /* [CP] Embed Pods Frameworks */,
+				6F7D3D2369D46C0355E6918F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -201,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4946C1641FA1F150009157C3 /* LaunchScreen.storyboard in Resources */,
+				49185DA21FC7702A0019D06F /* CustomView.xib in Resources */,
 				490F47161FBB0922007D16E6 /* TextForExercises.txt in Resources */,
 				49FE7ADC1FC5C93E0036660C /* Assets.xcassets in Resources */,
 				4946C15F1FA1F150009157C3 /* Main.storyboard in Resources */,
@@ -208,6 +242,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E5024B60C57B9911E08A270 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MrTrainer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F7D3D2369D46C0355E6918F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MrTrainer/Pods-MrTrainer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBCF1780B39566B267085643 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MrTrainer/Pods-MrTrainer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TGLParallaxCarousel/TGLParallaxCarousel.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TGLParallaxCarousel.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MrTrainer/Pods-MrTrainer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4946C1521FA1F14F009157C3 /* Sources */ = {
@@ -217,15 +305,16 @@
 				4946C15A1FA1F14F009157C3 /* AppDelegate.swift in Sources */,
 				499D79441FC35F73001444B0 /* ProgramsTableViewController.swift in Sources */,
 				49BFFE831FA76B7C007B6EA0 /* Data.swift in Sources */,
+				49185DA11FC7702A0019D06F /* CustomView.swift in Sources */,
 				49FE7ADE1FC604D30036660C /* ProgramDetailTableViewController.swift in Sources */,
 				4946C16C1FA20820009157C3 /* ExercisesTableViewController.swift in Sources */,
 				490F47B31FC19C75007D16E6 /* Model.xcdatamodeld in Sources */,
-				499D794C1FC48308001444B0 /* LevelImage.swift in Sources */,
 				494EF4BF1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift in Sources */,
 				49FF89E51FC3131200BF1C2A /* Exercise+CoreDataProperties.swift in Sources */,
 				490F47BC1FC2BBDC007D16E6 /* Program+CoreDataClass.swift in Sources */,
 				49FF89E41FC3131200BF1C2A /* Program+CoreDataProperties.swift in Sources */,
 				490F47BA1FC2BBDC007D16E6 /* Exercise+CoreDataClass.swift in Sources */,
+				49185D9E1FC76D300019D06F /* PersonalTrainerViewController.swift in Sources */,
 				490F47141FBAE96A007D16E6 /* TabBarViewController.swift in Sources */,
 				490F47B51FC2BA6D007D16E6 /* CoreDataManager.swift in Sources */,
 				499D79481FC35FDD001444B0 /* ProgramsTableViewCell.swift in Sources */,
@@ -364,6 +453,7 @@
 		};
 		4946C1691FA1F150009157C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00840B8909037828BD66A18F /* Pods-MrTrainer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -379,6 +469,7 @@
 		};
 		4946C16A1FA1F150009157C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12817F6E0C180CDEF6411FE4 /* Pods-MrTrainer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
