@@ -78,7 +78,7 @@ func initData() {
     bentOver.difficulty = "easy"
     bentOver.muscles = ["middle back"]
     bentOver.thumbnails = [#imageLiteral(resourceName: "bent_0"),#imageLiteral(resourceName: "bent_1"),#imageLiteral(resourceName: "bent_2"),#imageLiteral(resourceName: "bent_3"),#imageLiteral(resourceName: "bent_4"),#imageLiteral(resourceName: "bent_5"),#imageLiteral(resourceName: "bent_6"),#imageLiteral(resourceName: "bent_7"),#imageLiteral(resourceName: "bent_8"),#imageLiteral(resourceName: "bent_9"),#imageLiteral(resourceName: "bent_10"),#imageLiteral(resourceName: "bent_11")]
-    bentOver.images = [#imageLiteral(resourceName: "bentBig_0"),#imageLiteral(resourceName: "bentBig_1"),#imageLiteral(resourceName: "bentBig_2"),#imageLiteral(resourceName: "bentBig_3"),#imageLiteral(resourceName: "bentBig_4"),#imageLiteral(resourceName: "bentBig_5"),#imageLiteral(resourceName: "bentBig_6"),#imageLiteral(resourceName: "bentBig_7"),#imageLiteral(resourceName: "bentBig_8"),#imageLiteral(resourceName: "bentBig_9"),#imageLiteral(resourceName: "bentBig_10"),#imageLiteral(resourceName: "bentBig_11")]
+    bentOver.images = [#imageLiteral(resourceName: "bentBig_0"),#imageLiteral(resourceName: "bentBig_1"),#imageLiteral(resourceName: "bentBig_2"),#imageLiteral(resourceName: "bentBig_3"),#imageLiteral(resourceName: "bentBig_4"),#imageLiteral(resourceName: "bentBig_5"),#imageLiteral(resourceName: "bentBig_6"),#imageLiteral(resourceName: "bentBig_7"),#imageLiteral(resourceName: "bentBig_8"),#imageLiteral(resourceName: "bentBig_9")]
     bentOver.duration = 1.6
     bentOver.isFavourite = false
     bentOver.text = ["1. This is the text for 1 exercise! 1 str.",
@@ -153,7 +153,7 @@ func initData() {
     overhead.difficulty = "hard"
     overhead.muscles = ["shoulders"]
     overhead.thumbnails = [#imageLiteral(resourceName: "overhead_0"),#imageLiteral(resourceName: "overhead_1"),#imageLiteral(resourceName: "overhead_2"),#imageLiteral(resourceName: "overhead_3"),#imageLiteral(resourceName: "overhead_4"),#imageLiteral(resourceName: "overhead_5"),#imageLiteral(resourceName: "overhead_6"),#imageLiteral(resourceName: "overhead_7"),#imageLiteral(resourceName: "overhead_8"),#imageLiteral(resourceName: "overhead_9"),#imageLiteral(resourceName: "overhead_10")]
-    overhead.images = [#imageLiteral(resourceName: "overheadBig_0"),#imageLiteral(resourceName: "overheadBig_1"),#imageLiteral(resourceName: "overheadBig_2"),#imageLiteral(resourceName: "overheadBig_3"),#imageLiteral(resourceName: "overheadBig_4"),#imageLiteral(resourceName: "overheadBig_5"),#imageLiteral(resourceName: "overheadBig_6"),#imageLiteral(resourceName: "overheadBig_7"),#imageLiteral(resourceName: "overheadBig_8"),#imageLiteral(resourceName: "overheadBig_9"),#imageLiteral(resourceName: "overheadBig_10"),#imageLiteral(resourceName: "overheadBig_11")]
+    overhead.images = [#imageLiteral(resourceName: "overheadBig_0"),#imageLiteral(resourceName: "overheadBig_1"),#imageLiteral(resourceName: "overheadBig_2"),#imageLiteral(resourceName: "overheadBig_3"),#imageLiteral(resourceName: "overheadBig_4"),#imageLiteral(resourceName: "overheadBig_5"),#imageLiteral(resourceName: "overheadBig_6"),#imageLiteral(resourceName: "overheadBig_7"),#imageLiteral(resourceName: "overheadBig_8"),#imageLiteral(resourceName: "overheadBig_9"),#imageLiteral(resourceName: "overheadBig_10")]
     overhead.duration = 1.5
     overhead.isFavourite = false
     overhead.text = ["1. This is the text for 1 exercise! 1 str.",
@@ -198,7 +198,7 @@ func initData() {
     legPress.difficulty = "easy"
     legPress.muscles = ["quads"]
     legPress.thumbnails = [#imageLiteral(resourceName: "legPress_0"),#imageLiteral(resourceName: "legPress_1"),#imageLiteral(resourceName: "legPress_2"),#imageLiteral(resourceName: "legPress_3"),#imageLiteral(resourceName: "legPress_4"),#imageLiteral(resourceName: "legPress_5"),#imageLiteral(resourceName: "legPress_6"),#imageLiteral(resourceName: "legPress_7"),#imageLiteral(resourceName: "legPress_8"),#imageLiteral(resourceName: "legPress_9"),#imageLiteral(resourceName: "legPress_10")]
-    legPress.images = [#imageLiteral(resourceName: "legPressBig_0"),#imageLiteral(resourceName: "legPressBig_1"),#imageLiteral(resourceName: "legPressBig_2"),#imageLiteral(resourceName: "legPressBig_3"),#imageLiteral(resourceName: "legPressBig_4"),#imageLiteral(resourceName: "legPressBig_5"),#imageLiteral(resourceName: "legPressBig_6"),#imageLiteral(resourceName: "legPressBig_7"),#imageLiteral(resourceName: "legPressBig_8"),#imageLiteral(resourceName: "legPressBig_9"),#imageLiteral(resourceName: "legPressBig_10"),#imageLiteral(resourceName: "legPressBig_11")]
+    legPress.images = [#imageLiteral(resourceName: "legPressBig_0"),#imageLiteral(resourceName: "legPressBig_1"),#imageLiteral(resourceName: "legPressBig_2"),#imageLiteral(resourceName: "legPressBig_3"),#imageLiteral(resourceName: "legPressBig_4"),#imageLiteral(resourceName: "legPressBig_5"),#imageLiteral(resourceName: "legPressBig_6"),#imageLiteral(resourceName: "legPressBig_7"),#imageLiteral(resourceName: "legPressBig_8"),#imageLiteral(resourceName: "legPressBig_9"),#imageLiteral(resourceName: "legPressBig_10")]
     legPress.duration = 1.5
     legPress.isFavourite = false
     legPress.text = ["1. This is the text for 1 exercise! 1 str.",
@@ -213,7 +213,7 @@ func initData() {
     benchPress.difficulty = "medium"
     benchPress.muscles = ["chest"]
     benchPress.thumbnails = [#imageLiteral(resourceName: "benchPress_0"),#imageLiteral(resourceName: "benchPress_1"),#imageLiteral(resourceName: "benchPress_2"),#imageLiteral(resourceName: "benchPress_3"),#imageLiteral(resourceName: "benchPress_4"),#imageLiteral(resourceName: "benchPress_5"),#imageLiteral(resourceName: "benchPress_6"),#imageLiteral(resourceName: "benchPress_7"),#imageLiteral(resourceName: "benchPress_8"),#imageLiteral(resourceName: "benchPress_9")]
-    benchPress.images = [#imageLiteral(resourceName: "benchPressBig_0"),#imageLiteral(resourceName: "benchPressBig_1"),#imageLiteral(resourceName: "benchPressBig_2"),#imageLiteral(resourceName: "benchPressBig_3"),#imageLiteral(resourceName: "benchPressBig_4"),#imageLiteral(resourceName: "benchPressBig_5"),#imageLiteral(resourceName: "benchPressBig_6"),#imageLiteral(resourceName: "benchPressBig_7"),#imageLiteral(resourceName: "benchPressBig_8"),#imageLiteral(resourceName: "benchPressBig_9"),#imageLiteral(resourceName: "benchPressBig_10"),#imageLiteral(resourceName: "benchPressBig_11")]
+    benchPress.images = [#imageLiteral(resourceName: "benchPressBig_0"),#imageLiteral(resourceName: "benchPressBig_1"),#imageLiteral(resourceName: "benchPressBig_2"),#imageLiteral(resourceName: "benchPressBig_3"),#imageLiteral(resourceName: "benchPressBig_4"),#imageLiteral(resourceName: "benchPressBig_5"),#imageLiteral(resourceName: "benchPressBig_6"),#imageLiteral(resourceName: "benchPressBig_7"),#imageLiteral(resourceName: "benchPressBig_8"),#imageLiteral(resourceName: "benchPressBig_9")]
     benchPress.duration = 1.5
     benchPress.isFavourite = false
     benchPress.text = ["1. This is the text for 1 exercise! 1 str.",
@@ -243,7 +243,7 @@ func initData() {
     dips.difficulty = "easy"
     dips.muscles = ["triceps"]
     dips.thumbnails = [#imageLiteral(resourceName: "dips_0"),#imageLiteral(resourceName: "dips_1"),#imageLiteral(resourceName: "dips_2"),#imageLiteral(resourceName: "dips_3"),#imageLiteral(resourceName: "dips_4"),#imageLiteral(resourceName: "dips_5"),#imageLiteral(resourceName: "dips_6"),#imageLiteral(resourceName: "dips_7"),#imageLiteral(resourceName: "dips_8"),#imageLiteral(resourceName: "dips_9")]
-    dips.images = [#imageLiteral(resourceName: "dipsBig_0"),#imageLiteral(resourceName: "dipsBig_1"),#imageLiteral(resourceName: "dipsBig_2"),#imageLiteral(resourceName: "dipsBig_3"),#imageLiteral(resourceName: "dipsBig_4"),#imageLiteral(resourceName: "dipsBig_5"),#imageLiteral(resourceName: "dipsBig_6"),#imageLiteral(resourceName: "dipsBig_7"),#imageLiteral(resourceName: "dipsBig_8"),#imageLiteral(resourceName: "dipsBig_9"),#imageLiteral(resourceName: "dipsBig_10"),#imageLiteral(resourceName: "dipsBig_11")]
+    dips.images = [#imageLiteral(resourceName: "dipsBig_0"),#imageLiteral(resourceName: "dipsBig_1"),#imageLiteral(resourceName: "dipsBig_2"),#imageLiteral(resourceName: "dipsBig_3"),#imageLiteral(resourceName: "dipsBig_4"),#imageLiteral(resourceName: "dipsBig_5"),#imageLiteral(resourceName: "dipsBig_6"),#imageLiteral(resourceName: "dipsBig_7"),#imageLiteral(resourceName: "dipsBig_8"),#imageLiteral(resourceName: "dipsBig_9")]
     dips.duration = 1.5
     dips.isFavourite = false
     dips.text = ["1. This is the text for 1 exercise! 1 str.",
@@ -303,7 +303,7 @@ func initData() {
     triceps.difficulty = "easy"
     triceps.muscles = ["triceps"]
     triceps.thumbnails = [#imageLiteral(resourceName: "tricepsPushdown_0"),#imageLiteral(resourceName: "tricepsPushdown_1"),#imageLiteral(resourceName: "tricepsPushdown_2"),#imageLiteral(resourceName: "tricepsPushdown_3"),#imageLiteral(resourceName: "tricepsPushdown_4"),#imageLiteral(resourceName: "tricepsPushdown_5"),#imageLiteral(resourceName: "tricepsPushdown_6"),#imageLiteral(resourceName: "tricepsPushdown_7"),#imageLiteral(resourceName: "tricepsPushdown_8"),#imageLiteral(resourceName: "tricepsPushdown_9")]
-    triceps.images = [#imageLiteral(resourceName: "tricepsBig_0"),#imageLiteral(resourceName: "tricepsBig_1"),#imageLiteral(resourceName: "tricepsBig_2"),#imageLiteral(resourceName: "tricepsBig_3"),#imageLiteral(resourceName: "tricepsBig_4"),#imageLiteral(resourceName: "tricepsBig_5"),#imageLiteral(resourceName: "tricepsBig_6"),#imageLiteral(resourceName: "tricepsBig_7"),#imageLiteral(resourceName: "tricepsBig_8"),#imageLiteral(resourceName: "tricepsBig_9"),#imageLiteral(resourceName: "tricepsBig_10"),#imageLiteral(resourceName: "tricepsBig_11")]
+    triceps.images = [#imageLiteral(resourceName: "tricepsPushdownBig_0"),#imageLiteral(resourceName: "tricepsPushdownBig_1"),#imageLiteral(resourceName: "tricepsPushdownBig_2"),#imageLiteral(resourceName: "tricepsPushdownBig_3"),#imageLiteral(resourceName: "tricepsPushdownBig_4"),#imageLiteral(resourceName: "tricepsPushdownBig_5"),#imageLiteral(resourceName: "tricepsPushdownBig_6"),#imageLiteral(resourceName: "tricepsPushdownBig_7"),#imageLiteral(resourceName: "tricepsPushdownBig_8"),#imageLiteral(resourceName: "tricepsPushdownBig_9")]
     triceps.duration = 1.5
     triceps.isFavourite = false
     triceps.text = ["1. This is the text for 1 exercise! 1 str.",
