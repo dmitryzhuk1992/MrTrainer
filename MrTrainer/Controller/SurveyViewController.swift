@@ -8,11 +8,12 @@
 
 import UIKit
 import CoreData
+import JT3DScrollView
 
-class SurveyViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SurveyViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var itemLabel: UILabel!
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var surveyScrollView: JT3DScrollView?
     
     var fetchedResultsController: NSFetchedResultsController<Question> =
         CoreDataManager.fetchedResultsController(entityName: "Question",
@@ -39,49 +40,52 @@ class SurveyViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
         performFetch()
         
-        collectionView.collectionViewLayout = CardsCollectionViewLayout()
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.isPagingEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-    }
-    
-    var colors: [UIColor]  = [UIColor(red: 0xFF/0xFF, green: 0xFF/0xFF, blue: 0xFF/0xFF, alpha: 1.0),
-                              UIColor(red: 0x03/0xFF, green: 0xA9/0xFF, blue: 0xF4/0xFF, alpha: 1.0)]
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCellReuseIdentifier", for: indexPath) as! SurveyCollectionViewCell
-        cell.layer.cornerRadius = 7.0
-        cell.backgroundColor = (indexPath.row % 2 == 0) ? colors[0] : colors[1]
+        surveyScrollView?.effect = .carousel
+        surveyScrollView?.delegate = self
         
-        let fetchedObject = fetchedResultsController.object(at: indexPath)
-        cell.textView.text = fetchedObject.text
-        //cell.answersTitles = fetchedObject.possibleAnswers as! [String]
+        guard let questions = fetchedResultsController.fetchedObjects else { return }
+        itemLabel.text = "1 / \(questions.count)"
+        questions.forEach { [weak self] (question) in
+            self?.createSurveyScrollPage(with: question.text!)
+        }
 
-        
-        let number = 4
-        let width = cell.frame.width * 0.6
-        let height = cell.frame.height * 0.05
-        let x = cell.frame.width * 0.1
-        
-        for i in 0...number - 1 {
-            let y = cell.frame.height * 0.4 + (height * 1.5 * CGFloat(i))
-            let answerButton = UIButton(frame: CGRect(x: x, y: y, width: width, height: height))
-            answerButton.backgroundColor = .gray
-            answerButton.setTitle("Answer", for: UIControlState.normal)
-            //answerButton.isUserInteractionEnabled = true
-            cell.addSubview(answerButton)
-        }
-        
-        
-        return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count = fetchedResultsController.fetchedObjects?.count {
-            return count
-        } else {
-            return 0
+    //creating page with textView for surveyScrollView
+    private func createSurveyScrollPage(with text: String) {
+        guard let scrollView = surveyScrollView else {
+            return
         }
+        
+        let width = scrollView.frame.width
+        let height = scrollView.frame.height
+        let x = CGFloat(scrollView.subviews.count) * width / 2
+        
+        let view = UIView(frame: CGRect(x: x, y: 0, width: width, height: height))
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 8
+        view.layer.shadowRadius = 4
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.8
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        scrollView.addSubview(view)
+        scrollView.contentSize = CGSize(width: x + width, height: height)
+        
+        let textView = UITextView(frame: CGRect(x: x, y: height * 0.05, width: width, height: height * 0.9))
+        textView.isEditable = false
+        textView.isSelectable = false
+        textView.backgroundColor = .clear
+        textView.font = UIFont(name: "Apple SD Gothic Neo", size: 24)
+        textView.textAlignment = .center
+        textView.alignmentRect(forFrame: CGRect(x: x * 1.2, y: height * 0.2, width: width * 0.6, height: height * 0.6))
+        textView.text = text
+        scrollView.addSubview(textView)
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentPage = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        let allPages = fetchedResultsController.fetchedObjects!.count
+        itemLabel.text = "\(Int(currentPage) + 1) / \(allPages)"
+    }
+
 }

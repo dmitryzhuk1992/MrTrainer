@@ -30,7 +30,6 @@
 		499D79441FC35F73001444B0 /* ProgramsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D79431FC35F73001444B0 /* ProgramsTableViewController.swift */; };
 		499D79481FC35FDD001444B0 /* ProgramsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D79471FC35FDD001444B0 /* ProgramsTableViewCell.swift */; };
 		49BFFE831FA76B7C007B6EA0 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BFFE821FA76B7C007B6EA0 /* Data.swift */; };
-		49DC939D1FD04A0300F6510D /* SurveyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DC939C1FD04A0300F6510D /* SurveyCollectionViewCell.swift */; };
 		49FE7ADC1FC5C93E0036660C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49FE7ADB1FC5C93E0036660C /* Assets.xcassets */; };
 		49FE7ADE1FC604D30036660C /* ProgramDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE7ADD1FC604D30036660C /* ProgramDetailTableViewController.swift */; };
 		49FF89E41FC3131200BF1C2A /* Program+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FF89E21FC3131200BF1C2A /* Program+CoreDataProperties.swift */; };
@@ -67,7 +66,6 @@
 		499D79431FC35F73001444B0 /* ProgramsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsTableViewController.swift; sourceTree = "<group>"; };
 		499D79471FC35FDD001444B0 /* ProgramsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsTableViewCell.swift; sourceTree = "<group>"; };
 		49BFFE821FA76B7C007B6EA0 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		49DC939C1FD04A0300F6510D /* SurveyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCollectionViewCell.swift; sourceTree = "<group>"; };
 		49FE7ADB1FC5C93E0036660C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49FE7ADD1FC604D30036660C /* ProgramDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDetailTableViewController.swift; sourceTree = "<group>"; };
 		49FF89E21FC3131200BF1C2A /* Program+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Program+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				49FE7ADD1FC604D30036660C /* ProgramDetailTableViewController.swift */,
 				49185D9D1FC76D300019D06F /* PersonalTrainerViewController.swift */,
 				49185DA51FC81E9A0019D06F /* SurveyViewController.swift */,
-				49DC939C1FD04A0300F6510D /* SurveyCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -320,7 +317,6 @@
 			files = (
 				4946C15A1FA1F14F009157C3 /* AppDelegate.swift in Sources */,
 				492807531FCB58E7008AEB23 /* PossibleAnswers+CoreDataProperties.swift in Sources */,
-				49DC939D1FD04A0300F6510D /* SurveyCollectionViewCell.swift in Sources */,
 				49185DA61FC81E9A0019D06F /* SurveyViewController.swift in Sources */,
 				4928074B1FCB5467008AEB23 /* Question+CoreDataClass.swift in Sources */,
 				4928074D1FCB5467008AEB23 /* UserAnswer+CoreDataClass.swift in Sources */,
