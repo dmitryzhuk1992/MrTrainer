@@ -11,31 +11,52 @@ import CoreData
 
 class ExercisesTableViewController: UITableViewController {
     
+    private var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    
     var fetchedResultsController: NSFetchedResultsController<Exercise> =
         CoreDataManager.fetchedResultsController(entityName: "Exercise",
                                                  keyForSort: "identifier",
                                                  predicate: nil) as! NSFetchedResultsController<Exercise>
-    var showFavourites = Bool()
+    private var showFavourites = Bool()
     
-    var numberOfRows = Int()
+    private var numberOfRows = Int()
     
+    private var isBusy = false
+    
+    @IBOutlet weak var favouritesButton: UIButton!
+    
+    //favourite button
     @IBAction func favouritesButton(_ sender: UIButton) {
+        guard favouritesButton.isEnabled == true else { return }
+        
+        favouritesButton.isEnabled = false
+        activityIndicator.startAnimating()
         sender.isSelected = !sender.isSelected
+
         if sender.isSelected {
-            showFavourites = true
-            navigationItem.title = "Your Favourites"
-            fetchedResultsController = CoreDataManager.fetchedResultsController(entityName: "Exercise",
-                                                                                keyForSort: "identifier",
-                                                                                predicate: "isFavourite == true") as! NSFetchedResultsController<Exercise>
+            showExercisesWithParams(showFavourites: true, predicate: "isFavourite == true", title: "Your Favourites")
         } else {
-            showFavourites = false
-            navigationItem.title = "All Exercises"
-            fetchedResultsController = CoreDataManager.fetchedResultsController(entityName: "Exercise",
-                                                                                keyForSort: "identifier",
-                                                                                predicate: nil) as! NSFetchedResultsController<Exercise>
+            showExercisesWithParams(showFavourites: false, predicate: nil, title: "All Exercises")
         }
-        performFetch()
-        tableView.reloadData()
+    }
+    
+    private func showExercisesWithParams(showFavourites: Bool, predicate: String?, title: String) {
+        DispatchQueue.global().async {
+            self.showFavourites = showFavourites
+            if let results = CoreDataManager.fetchedResultsController(entityName: "Exercise",
+                                                                         keyForSort: "identifier",
+                                                                         predicate: predicate) as? NSFetchedResultsController<Exercise>
+            {
+                self.fetchedResultsController = results
+                
+                DispatchQueue.main.async {
+                    self.navigationItem.title = title
+                    self.tableView.reloadData()
+                    self.activityIndicator.stopAnimating()
+                    self.favouritesButton.isEnabled = true
+                }
+            }
+        }
     }
     
     //executes the fetch request
@@ -43,7 +64,7 @@ class ExercisesTableViewController: UITableViewController {
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
-            print("Error fetch perform: \(error.localizedDescription)")
+            print("Error fetchPerform: \(error.localizedDescription)")
         }
     }
     
@@ -63,6 +84,8 @@ class ExercisesTableViewController: UITableViewController {
         tableView.backgroundColor = UIColor(red: 0x30/0xFF, green: 0x30/0xFF, blue: 0x30/0xFF, alpha: 1.0)
         tableView.decelerationRate = UIScrollViewDecelerationRateFast
         tableView.separatorStyle = .none
+        
+        setupActivityIndicator()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +101,7 @@ class ExercisesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        performFetch()
         if let sections = fetchedResultsController.sections {
             return sections[section].numberOfObjects
         } else {
@@ -87,7 +111,7 @@ class ExercisesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExercisesTableViewCell
-
+        
         //change color for even cells
         cell.setColorForRowAt(index: indexPath.row)
         
@@ -168,6 +192,17 @@ class ExercisesTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    //initialization activity indicator
+    private func setupActivityIndicator() {
+        let width = UIScreen.main.bounds.width / 10
+        let height = width
+        let x = UIScreen.main.bounds.width / 2 - width / 2
+        let y = UIScreen.main.bounds.height / 2 - height / 2
+        activityIndicator.frame = CGRect(x: x, y: y, width: width, height: height)
+        activityIndicator.hidesWhenStopped = true
+        navigationController?.view.addSubview(activityIndicator)
     }
 
     

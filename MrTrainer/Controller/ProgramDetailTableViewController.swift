@@ -16,7 +16,7 @@ class ProgramDetailTableViewController: UITableViewController {
     var exercises = [Exercise]()
     
     var mainMuscles = Set<String>()
-    var exercisesForMuscle = [[Exercise]]()
+    var exercisesForMuscles = [[Exercise]]()
     
 
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ class ProgramDetailTableViewController: UITableViewController {
                     subArrayForMuscle.append(exercise)
                 }
             }
-            exercisesForMuscle.append(subArrayForMuscle)
+            exercisesForMuscles.append(subArrayForMuscle)
             i += 1
         }
 
@@ -76,7 +76,7 @@ class ProgramDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return exercisesForMuscle[section].count
+        return exercisesForMuscles[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,7 +86,7 @@ class ProgramDetailTableViewController: UITableViewController {
         cell.setColorForRowAt(index: indexPath.row)
         
         //get data for program
-        let exercise = exercisesForMuscle[indexPath.section][indexPath.row]
+        let exercise = exercisesForMuscles[indexPath.section][indexPath.row]
         
         cell.nameLabel.text = exercise.title
         cell.difficultyLabel.text = " \(exercise.difficulty ?? "default") "
@@ -129,7 +129,9 @@ class ProgramDetailTableViewController: UITableViewController {
         if segue.identifier == "SegueProgramToExercise" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 if let dvc = segue.destination as? ExerciseDetailViewController {
-                    dvc.exercise = exercises[indexPath.row]
+                    
+                    //need rewrite
+                    dvc.exercise = exercisesForMuscles[indexPath.section][indexPath.row]
                 }
             }
         }

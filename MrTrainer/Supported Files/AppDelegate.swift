@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Data initialization
         if !UserDefaults.standard.bool(forKey: "dataInitialized") {
+            initSurvey()
             initData()
         }
 

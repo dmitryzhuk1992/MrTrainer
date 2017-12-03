@@ -6,5 +6,5 @@ target 'MrTrainer' do
   use_frameworks!
 
   # Pods for MrTrainer
-	pod 'TGLParallaxCarousel'
+pod 'JT3DScrollView'
 end

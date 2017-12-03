@@ -7,12 +7,13 @@
 //
 
 import UIKit
-import TGLParallaxCarousel
+import JT3DScrollView
 
 class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var carouselView: TGLParallaxCarousel!
+    @IBOutlet weak var scrollView: JT3DScrollView?
+    @IBOutlet weak var pageControl: UIPageControl!
     
     var exercise: Exercise?
     
@@ -24,47 +25,61 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 0x42/0xFF, green: 0x42/0xFF, blue: 0x42/0xFF, alpha: 1.0)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.hidesBarsOnSwipe = false
+        
+        scrollView?.effect = .depth
+        scrollView?.delegate = self
 
         guard let exercise = exercise else { return }
         title = exercise.title
         imageView.image = UIImage.animatedImage(with: exercise.images!, duration: exercise.duration)
         text = exercise.text!
-
-        view.backgroundColor = UIColor(red: 0x42/0xFF, green: 0x42/0xFF, blue: 0x42/0xFF, alpha: 1.0)
         
-        setupCarousel()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        text.forEach { [weak self] (text) in
+            self?.createScrollPage(with: text)
+        }
         
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.hidesBarsOnSwipe = false
+        pageControl.numberOfPages = text.count
+        pageControl.currentPage = 0
     }
     
-    // MARK: - methods
-    func setupCarousel() {
-        carouselView.delegate = self
-        carouselView.margin = 0
-        carouselView.selectedIndex = 0
-        carouselView.type = .threeDimensional
+    //creating page with textView for scrollView
+    private func createScrollPage(with text: String) {
+        guard let scrollView = scrollView else {
+            return
+        }
+        
+        let width = scrollView.frame.width
+        let height = scrollView.frame.height
+        let x = CGFloat(scrollView.subviews.count) * width / 2
+        
+        let view = UIView(frame: CGRect(x: x, y: 0, width: width, height: height))
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 8
+        view.layer.shadowRadius = 4
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.8
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        scrollView.addSubview(view)
+        scrollView.contentSize = CGSize(width: x + width, height: height)
+        
+        let textView = UITextView(frame: CGRect(x: x, y: height * 0.05, width: width, height: height * 0.9))
+        textView.isEditable = false
+        textView.isSelectable = false
+        textView.backgroundColor = .clear
+        textView.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
+        textView.textAlignment = .center
+        textView.alignmentRect(forFrame: CGRect(x: x * 1.2, y: height * 0.2, width: width * 0.6, height: height * 0.6))
+        textView.text = text
+        scrollView.addSubview(textView)
     }
-}
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentPage = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(currentPage)
+    }
 
-extension ExerciseDetailViewController: TGLParallaxCarouselDelegate {
-    
-    func numberOfItemsInCarouselView(_ carouselView: TGLParallaxCarousel) -> Int {
-        return text.count
-    }
-    
-    func carouselView(_ carouselView: TGLParallaxCarousel, itemForRowAtIndex index: Int) -> TGLParallaxCarouselItem {
-        return CustomView(frame: CGRect(x: 0, y: 0, width: 300, height: 150), text: text[index])
-    }
-    
-    func carouselView(_ carouselView: TGLParallaxCarousel, didSelectItemAtIndex index: Int) {
-        //print("Tap on item at index \(index)")
-    }
-    
-    func carouselView(_ carouselView: TGLParallaxCarousel, willDisplayItem item: TGLParallaxCarouselItem, forIndex index: Int) {
-    }
+
 }

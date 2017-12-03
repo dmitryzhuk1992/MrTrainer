@@ -9,6 +9,82 @@
 import Foundation
 import UIKit
 
+func initSurvey()  {
+    
+    let answersToTheFirstQue: PossibleAnswers = PossibleAnswers()
+    answersToTheFirstQue.answers = ["Мужчина","Женщина"]
+    
+    let firstQuestion: Question = Question()
+    firstQuestion.id = 0
+    firstQuestion.text = "Ваш пол?"
+    firstQuestion.addToPossibleAnswers(answersToTheFirstQue)
+    
+    let answersToTheSecondQue: PossibleAnswers = PossibleAnswers()
+    answersToTheSecondQue.answers = ["до 16","16...25","25...40","за 40"]
+    
+    let secondQuestion: Question = Question()
+    secondQuestion.id = 1
+    secondQuestion.text = "Ваш возраст?"
+    secondQuestion.addToPossibleAnswers(answersToTheSecondQue)
+    
+    let answersToTheThirdQue: PossibleAnswers = PossibleAnswers()
+    answersToTheThirdQue.answers = ["менее 50","50...70","70...90","более 90"]
+    
+    let thirdQuestion: Question = Question()
+    thirdQuestion.id = 2
+    thirdQuestion.text = "Ваш вес?"
+    thirdQuestion.addToPossibleAnswers(answersToTheThirdQue)
+    
+    let answersToTheFourthQue: PossibleAnswers = PossibleAnswers()
+    answersToTheFourthQue.answers = ["ниже 160","160...170","170...190","выше 190"]
+    
+    let fourthQuestion: Question = Question()
+    fourthQuestion.id = 3
+    fourthQuestion.text = "Ваш рост?"
+    fourthQuestion.addToPossibleAnswers(answersToTheFourthQue)
+    
+    let answersToTheFifthQue: PossibleAnswers = PossibleAnswers()
+    answersToTheFifthQue.answers = ["Худое","Среднее","Полное","Мускулистое"]
+    
+    let fifthQuestion: Question = Question()
+    fifthQuestion.id = 4
+    fifthQuestion.text = "Ваше телосложение?"
+    fifthQuestion.addToPossibleAnswers(answersToTheFifthQue)
+    
+    let answersToTheSixthQue: PossibleAnswers = PossibleAnswers()
+    answersToTheSixthQue.answers = ["Начинающий","Ранее тренировался","Иногда тренируюсь","Спортсмен"]
+    
+    let sixthQuestion: Question = Question()
+    sixthQuestion.id = 5
+    sixthQuestion.text = "Стаж тренировок?"
+    sixthQuestion.addToPossibleAnswers(answersToTheSixthQue)
+    
+    let answersToTheSeventhQue: PossibleAnswers = PossibleAnswers()
+    answersToTheSeventhQue.answers = ["Низкий","Средний","Высокий"]
+    
+    let seventhQuestion: Question = Question()
+    seventhQuestion.id = 6
+    seventhQuestion.text = "Ваш уровень активности?"
+    seventhQuestion.addToPossibleAnswers(answersToTheSeventhQue)
+    
+    let answersToTheEighthQue: PossibleAnswers = PossibleAnswers()
+    answersToTheEighthQue.answers = ["Полностью здоров","Большие нагрузки нежелательны","Любые нагрузки нежелательны"]
+    
+    let eighthQuestion: Question = Question()
+    eighthQuestion.id = 7
+    eighthQuestion.text = "Ваше здоровье?"
+    eighthQuestion.addToPossibleAnswers(answersToTheEighthQue)
+    
+    let answersToTheNinthQue: PossibleAnswers = PossibleAnswers()
+    answersToTheNinthQue.answers = ["Похудеть","Увеличить рельеф","Набрать массу","Увеличить силу"]
+    
+    let ninthQuestion: Question = Question()
+    ninthQuestion.id = 7
+    ninthQuestion.text = "Ваша цель?"
+    ninthQuestion.addToPossibleAnswers(answersToTheNinthQue)
+
+}
+
 func initData() {
     
     //эллиптический тренажёр
@@ -36,10 +112,10 @@ func initData() {
     bikeMachine.images = [#imageLiteral(resourceName: "bikeBig_0"),#imageLiteral(resourceName: "bikeBig_1"),#imageLiteral(resourceName: "bikeBig_2"),#imageLiteral(resourceName: "bikeBig_3"),#imageLiteral(resourceName: "bikeBig_4"),#imageLiteral(resourceName: "bikeBig_5"),#imageLiteral(resourceName: "bikeBig_6"),#imageLiteral(resourceName: "bikeBig_7"),#imageLiteral(resourceName: "bikeBig_8"),#imageLiteral(resourceName: "bikeBig_9"),#imageLiteral(resourceName: "bikeBig_10"),#imageLiteral(resourceName: "bikeBig_11")]
     bikeMachine.duration = 1.2
     bikeMachine.isFavourite = false
-    bikeMachine.text = ["1. This is the text for 1 exercise! 1 str.",
-                        "2. This is the text for 1 exercise! 2 str.",
-                        "3. This is the text for 1 exercise! 3 str.",
-                        "4. This is the text for 1 exercise! 4 str."]
+    bikeMachine.text = ["1. This is the text for 2 exercise! 1 str.",
+                        "2. This is the text for 2 exercise! 2 str.",
+                        "3. This is the text for 2 exercise! 3 str.",
+                        "4. This is the text for 2 exercise! 4 str."]
     
     //беговая дорожка
     let runningMachine: Exercise = Exercise()
@@ -51,10 +127,10 @@ func initData() {
     runningMachine.images = [#imageLiteral(resourceName: "runningBig_0"),#imageLiteral(resourceName: "runningBig_1"),#imageLiteral(resourceName: "runningBig_2"),#imageLiteral(resourceName: "runningBig_3"),#imageLiteral(resourceName: "runningBig_4"),#imageLiteral(resourceName: "runningBig_5"),#imageLiteral(resourceName: "runningBig_6"),#imageLiteral(resourceName: "runningBig_7"),#imageLiteral(resourceName: "runningBig_8"),#imageLiteral(resourceName: "runningBig_9"),#imageLiteral(resourceName: "runningBig_10")]
     runningMachine.duration = 0.8
     runningMachine.isFavourite = false
-    runningMachine.text = ["1. This is the text for 1 exercise! 1 str.",
-                           "2. This is the text for 1 exercise! 2 str.",
-                           "3. This is the text for 1 exercise! 3 str.",
-                           "4. This is the text for 1 exercise! 4 str."]
+    runningMachine.text = ["1. This is the text for 3 exercise! 1 str.",
+                           "2. This is the text for 3 exercise! 2 str.",
+                           "3. This is the text for 3 exercise! 3 str.",
+                           "4. This is the text for 3 exercise! 4 str."]
     
     //тяга верхнего блока за голову
     let behindTheNeck: Exercise = Exercise()
@@ -66,10 +142,10 @@ func initData() {
     behindTheNeck.images = [#imageLiteral(resourceName: "behindTheNeckBig_0"),#imageLiteral(resourceName: "behindTheNeckBig_1"),#imageLiteral(resourceName: "behindTheNeckBig_2"),#imageLiteral(resourceName: "behindTheNeckBig_3"),#imageLiteral(resourceName: "behindTheNeckBig_4"),#imageLiteral(resourceName: "behindTheNeckBig_5"),#imageLiteral(resourceName: "behindTheNeckBig_6"),#imageLiteral(resourceName: "behindTheNeckBig_7"),#imageLiteral(resourceName: "behindTheNeckBig_8"),#imageLiteral(resourceName: "behindTheNeckBig_9"),#imageLiteral(resourceName: "behindTheNeckBig_10"),#imageLiteral(resourceName: "behindTheNeckBig_11")]
     behindTheNeck.duration = 1.5
     behindTheNeck.isFavourite = false
-    behindTheNeck.text = ["1. This is the text for 1 exercise! 1 str.",
-                          "2. This is the text for 1 exercise! 2 str.",
-                          "3. This is the text for 1 exercise! 3 str.",
-                          "4. This is the text for 1 exercise! 4 str."]
+    behindTheNeck.text = ["1. This is the text for 4 exercise! 1 str.",
+                          "2. This is the text for 4 exercise! 2 str.",
+                          "3. This is the text for 4 exercise! 3 str.",
+                          "4. This is the text for 4 exercise! 4 str."]
     
     //тяга штанги в наклоне
     let bentOver: Exercise = Exercise()
@@ -81,10 +157,10 @@ func initData() {
     bentOver.images = [#imageLiteral(resourceName: "bentBig_0"),#imageLiteral(resourceName: "bentBig_1"),#imageLiteral(resourceName: "bentBig_2"),#imageLiteral(resourceName: "bentBig_3"),#imageLiteral(resourceName: "bentBig_4"),#imageLiteral(resourceName: "bentBig_5"),#imageLiteral(resourceName: "bentBig_6"),#imageLiteral(resourceName: "bentBig_7"),#imageLiteral(resourceName: "bentBig_8"),#imageLiteral(resourceName: "bentBig_9")]
     bentOver.duration = 1.6
     bentOver.isFavourite = false
-    bentOver.text = ["1. This is the text for 1 exercise! 1 str.",
-                     "2. This is the text for 1 exercise! 2 str.",
-                     "3. This is the text for 1 exercise! 3 str.",
-                     "4. This is the text for 1 exercise! 4 str."]
+    bentOver.text = ["1. This is the text for 5 exercise! 1 str.",
+                     "2. This is the text for 5 exercise! 2 str.",
+                     "3. This is the text for 5 exercise! 3 str.",
+                     "4. This is the text for 5 exercise! 4 str."]
     
     //становая тяга
     let deadlift: Exercise = Exercise()
