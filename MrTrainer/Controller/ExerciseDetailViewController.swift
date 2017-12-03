@@ -12,6 +12,8 @@ import JT3DScrollView
 class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var musclesTextView: UITextView!
+    @IBOutlet weak var difficultyTextView: UITextView!
     @IBOutlet weak var scrollView: JT3DScrollView?
     @IBOutlet weak var pageControl: UIPageControl!
     
@@ -40,6 +42,14 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
         text.forEach { [weak self] (text) in
             self?.createScrollPage(with: text)
         }
+        
+        musclesTextView.text = ""
+        exercise.muscles?.forEach({ [weak self] (muscle) in
+            let existingText = self?.musclesTextView.text
+            self?.musclesTextView.text = "\(existingText ?? "")\(muscle)\n"
+        })
+        
+        difficultyTextView.text = exercise.difficulty
         
         pageControl.numberOfPages = text.count
         pageControl.currentPage = 0

@@ -58,6 +58,22 @@ class SurveyViewController: UIViewController, UICollectionViewDataSource, UIColl
         cell.textView.text = fetchedObject.text
         //cell.answersTitles = fetchedObject.possibleAnswers as! [String]
 
+        
+        let number = 4
+        let width = cell.frame.width * 0.6
+        let height = cell.frame.height * 0.05
+        let x = cell.frame.width * 0.1
+        
+        for i in 0...number - 1 {
+            let y = cell.frame.height * 0.4 + (height * 1.5 * CGFloat(i))
+            let answerButton = UIButton(frame: CGRect(x: x, y: y, width: width, height: height))
+            answerButton.backgroundColor = .gray
+            answerButton.setTitle("Answer", for: UIControlState.normal)
+            //answerButton.isUserInteractionEnabled = true
+            cell.addSubview(answerButton)
+        }
+        
+        
         return cell
     }
     
