@@ -1,0 +1,117 @@
+
+/* Class = "UILabel"; text = "Привет, меня зовут ДиДи, и я твой персональный тренер. Я могу составить для тебя индивидуальную программу тренировок, но перед этим ты должен рассказать мне немного о себе."; ObjectID = "63y-Ot-VVm"; */
+"63y-Ot-VVm.text" = "Привет, меня зовут ДиДи, и я твой персональный тренер. Я могу составить для тебя индивидуальную программу тренировок, но перед этим ты должен рассказать мне немного о себе.";
+
+/* Class = "UILabel"; text = "Difficulty"; ObjectID = "8Xa-UC-R4A"; */
+"8Xa-UC-R4A.text" = "Difficulty";
+
+/* Class = "UITabBarItem"; title = "Тренер"; ObjectID = "CF6-DN-jbm"; */
+"CF6-DN-jbm.title" = "Тренер";
+
+/* Class = "UINavigationItem"; title = "Персональный Тренер"; ObjectID = "CRv-qH-F78"; */
+"CRv-qH-F78.title" = "Персональный Тренер";
+
+/* Class = "UIButton"; normalTitle = "Answer1"; ObjectID = "EYY-cK-xHd"; */
+"EYY-cK-xHd.normalTitle" = "Answer1";
+
+/* Class = "UIButton"; normalTitle = "Reset"; ObjectID = "EZ7-x1-sDy"; */
+"EZ7-x1-sDy.normalTitle" = "Reset";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "FDO-Yo-YEH"; */
+"FDO-Yo-YEH.title" = "Item";
+
+/* Class = "UILabel"; text = "muscles"; ObjectID = "Gjz-ZC-5i3"; */
+"Gjz-ZC-5i3.text" = "muscles";
+
+/* Class = "UILabel"; text = "Repeat"; ObjectID = "KN2-nx-CfC"; */
+"KN2-nx-CfC.text" = "Repeat";
+
+/* Class = "UIButton"; normalTitle = "Answer4"; ObjectID = "KpX-9B-whg"; */
+"KpX-9B-whg.normalTitle" = "Answer4";
+
+/* Class = "UINavigationItem"; title = "Программы Тренировок"; ObjectID = "NxZ-40-mJX"; */
+"NxZ-40-mJX.title" = "Программы Тренировок";
+
+/* Class = "UILabel"; text = "Title Line 1\nTitle Line 2"; ObjectID = "O2b-ro-mXt"; */
+"O2b-ro-mXt.text" = "Title Line 1\nTitle Line 2";
+
+/* Class = "UINavigationItem"; title = "Ваша Программа"; ObjectID = "UMB-N1-skR"; */
+"UMB-N1-skR.title" = "Ваша Программа";
+
+/* Class = "UITabBarItem"; title = "Таймер"; ObjectID = "Vao-Bx-GmM"; */
+"Vao-Bx-GmM.title" = "Таймер";
+
+/* Class = "UILabel"; text = "Muscles"; ObjectID = "VuZ-36-dC7"; */
+"VuZ-36-dC7.text" = "Muscles";
+
+/* Class = "UITextView"; text = "Difficulty"; ObjectID = "Vyk-0W-bBb"; */
+"Vyk-0W-bBb.text" = "Difficulty";
+
+/* Class = "UILabel"; text = "muscles"; ObjectID = "WUp-bY-HWX"; */
+"WUp-bY-HWX.text" = "muscles";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Wus-fB-bYG"; */
+"Wus-fB-bYG.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "Упражнения"; ObjectID = "Xyh-Bz-sND"; */
+"Xyh-Bz-sND.title" = "Упражнения";
+
+/* Class = "UINavigationItem"; title = "Все Упражнения"; ObjectID = "YQV-5Z-Pj9"; */
+"YQV-5Z-Pj9.title" = "Все Упражнения";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "a9V-64-UBO"; */
+"a9V-64-UBO.text" = "00:00";
+
+/* Class = "UILabel"; text = "difficulty"; ObjectID = "coV-gz-kM3"; */
+"coV-gz-kM3.text" = "difficulty";
+
+/* Class = "UILabel"; text = "Remaining Time"; ObjectID = "d7v-uP-Mcw"; */
+"d7v-uP-Mcw.text" = "Remaining Time";
+
+/* Class = "UILabel"; text = "difficulty"; ObjectID = "fe0-nb-kue"; */
+"fe0-nb-kue.text" = "difficulty";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "ffM-O6-EtB"; */
+"ffM-O6-EtB.text" = "00:00";
+
+/* Class = "UINavigationItem"; title = "Таймер Для Тренировок"; ObjectID = "gGk-Dj-buY"; */
+"gGk-Dj-buY.title" = "Таймер Для Тренировок";
+
+/* Class = "UIButton"; normalTitle = "Answer2"; ObjectID = "i5f-2I-rPU"; */
+"i5f-2I-rPU.normalTitle" = "Answer2";
+
+/* Class = "UIButton"; normalTitle = "Answer3"; ObjectID = "ieh-wG-FRs"; */
+"ieh-wG-FRs.normalTitle" = "Answer3";
+
+/* Class = "UILabel"; text = "x 5"; ObjectID = "it1-sB-kq5"; */
+"it1-sB-kq5.text" = "x 5";
+
+/* Class = "UIButton"; normalTitle = "Create Program"; ObjectID = "lHz-J1-tp2"; */
+"lHz-J1-tp2.normalTitle" = "Create Program";
+
+/* Class = "UILabel"; text = "Work"; ObjectID = "pzi-Nr-Bf7"; */
+"pzi-Nr-Bf7.text" = "Work";
+
+/* Class = "UILabel"; text = "item / items"; ObjectID = "qSU-25-RXr"; */
+"qSU-25-RXr.text" = "item / items";
+
+/* Class = "UILabel"; text = "Rest"; ObjectID = "tdX-cE-3zh"; */
+"tdX-cE-3zh.text" = "Rest";
+
+/* Class = "UITextView"; text = "Muscles"; ObjectID = "tfN-px-mYe"; */
+"tfN-px-mYe.text" = "Muscles";
+
+/* Class = "UITabBarItem"; title = "Программы"; ObjectID = "tkg-Wm-oJz"; */
+"tkg-Wm-oJz.title" = "Программы";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "wCD-SV-mts"; */
+"wCD-SV-mts.normalTitle" = "Start";
+
+/* Class = "UILabel"; text = "Title Line"; ObjectID = "x93-Qm-UJF"; */
+"x93-Qm-UJF.text" = "Title Line";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "xiC-SW-cif"; */
+"xiC-SW-cif.text" = "00:00";
+
+/* Class = "UIButton"; normalTitle = "Начать"; ObjectID = "z4R-Dz-2Wf"; */
+"z4R-Dz-2Wf.normalTitle" = "Начать";

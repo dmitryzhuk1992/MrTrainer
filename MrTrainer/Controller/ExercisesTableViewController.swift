@@ -34,9 +34,9 @@ class ExercisesTableViewController: UITableViewController {
         sender.isSelected = !sender.isSelected
 
         if sender.isSelected {
-            showExercisesWithParams(showFavourites: true, predicate: "isFavourite == true", title: "Your Favourites")
+            showExercisesWithParams(showFavourites: true, predicate: "isFavourite == true", title: "Избранное")
         } else {
-            showExercisesWithParams(showFavourites: false, predicate: nil, title: "All Exercises")
+            showExercisesWithParams(showFavourites: false, predicate: nil, title: "Все Упражнения")
         }
     }
     
@@ -120,7 +120,7 @@ class ExercisesTableViewController: UITableViewController {
 
         cell.nameLabel.text = exercise.title
         cell.difficultyLabel.text = " \(exercise.difficulty ?? "default") "
-        cell.musclesLabel.text = exercise.muscles?.joined(separator: ",")
+        cell.musclesLabel.text = exercise.muscles?.joined(separator: ", ")
         
         //in global queue
         DispatchQueue.global(qos: .userInteractive).async {
@@ -144,31 +144,32 @@ class ExercisesTableViewController: UITableViewController {
         var favouriteAction = UITableViewRowAction()
     
         if showFavourites == false {
-            favouriteAction = UITableViewRowAction(style: .default, title: "Add To Favourites") { (action, indexPath) in
+            favouriteAction = UITableViewRowAction(style: .default, title: "Добавить В Избранное") { (action, indexPath) in
                 exercise.isFavourite = true
                 //CoreDataManager.saveContext()
-                do {
-                    try self.fetchedResultsController.managedObjectContext.save()
-                } catch let error as NSError {
-                    print("Can't saved context: \(error.localizedDescription)")
-                }
+                self.saveContext()
             }
             favouriteAction.backgroundColor = UIColor(red: 0xFF/0xFF, green: 0xC1/0xFF, blue: 0x07/0xFF, alpha: 1.0)
         } else {
-            favouriteAction = UITableViewRowAction(style: .default, title: "Remove From Favourites") { (action, indexPath) in
+            favouriteAction = UITableViewRowAction(style: .default, title: "Удалить Из Избранного") { (action, indexPath) in
                 exercise.isFavourite = false
                 //CoreDataManager.saveContext()
-                do {
-                    try self.fetchedResultsController.managedObjectContext.save()
-                } catch let error as NSError {
-                    print("Can't saved context: \(error.localizedDescription)")
-                }
+                self.saveContext()
                 self.performFetch()
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
 
         return [favouriteAction]
+    }
+    
+    //CoreDataManager.saveContext()
+    private func saveContext() {
+        do {
+            try self.fetchedResultsController.managedObjectContext.save()
+        } catch let error as NSError {
+            print("Can't saved context: \(error.localizedDescription)")
+        }
     }
     
     override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {

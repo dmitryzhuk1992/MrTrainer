@@ -1,8 +1,9 @@
 //
 //  UserAnswer+CoreDataProperties.swift
-//  
+//  MrTrainer
 //
-//  Created by Dmitriy Zhuk on 26.11.17.
+//  Created by Dmitriy Zhuk on 07.12.17.
+//  Copyright © 2017 Dmitriy Zhuk. All rights reserved.
 //
 //
 

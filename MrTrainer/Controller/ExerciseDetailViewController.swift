@@ -64,6 +64,9 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
         let width = scrollView.frame.width
         let height = scrollView.frame.height
         let x = CGFloat(scrollView.subviews.count) * width / 2
+        print(width)
+        print(height)
+        print("\n")
         
         let view = UIView(frame: CGRect(x: x, y: 0, width: width, height: height))
         view.backgroundColor = .white
@@ -75,15 +78,15 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(view)
         scrollView.contentSize = CGSize(width: x + width, height: height)
         
-        let textView = UITextView(frame: CGRect(x: x, y: height * 0.05, width: width, height: height * 0.9))
-        textView.isEditable = false
-        textView.isSelectable = false
-        textView.backgroundColor = .clear
-        textView.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
-        textView.textAlignment = .center
-        textView.alignmentRect(forFrame: CGRect(x: x * 1.2, y: height * 0.2, width: width * 0.6, height: height * 0.6))
-        textView.text = text
-        scrollView.addSubview(textView)
+        let textLabel = UILabel(frame: CGRect(x: x, y: height * 0.05, width: width, height: height * 0.9))
+        textLabel.backgroundColor = .clear
+        textLabel.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
+        //textLabel.alignmentRect(forFrame: CGRect(x: x * 1.2, y: height * 0.2, width: width * 0.6, height: height * 0.6))
+        textLabel.textAlignment = .center
+        textLabel.numberOfLines = 0
+        textLabel.adjustsFontSizeToFitWidth = true
+        textLabel.text = text
+        scrollView.addSubview(textLabel)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -91,5 +94,9 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = Int(currentPage)
     }
 
-
+    override func willMove(toParentViewController parent: UIViewController?) {
+        if parent == nil {
+            scrollView?.removeFromSuperview()
+        }
+    }
 }

@@ -43,18 +43,11 @@ class ExercisesTableViewCell: UITableViewCell {
         contentView.addSubview(backView)
         contentView.sendSubview(toBack: backView)
         
-        
         //difficulty level
         difficultyLabel.backgroundColor = UIColor(red: 0x03/0xFF, green: 0xA9/0xFF, blue: 0xF4/0xFF, alpha: 1.0)
-//        difficultyLabel.layer.shadowColor = UIColor.white.cgColor
-//        difficultyLabel.layer.shadowOffset = CGSize(width: 5, height: 5)
-//        difficultyLabel.layer.shadowOpacity = 1.0
-//        difficultyLabel.layer.shadowRadius = 3.0
         difficultyLabel.layer.cornerRadius = 2
         difficultyLabel.clipsToBounds = true
         difficultyLabel.isHidden = false
-
-        //selectedBackgroundView?.backgroundColor = UIColor(red: 0x03/0xFF, green: 0xA9/0xFF, blue: 0xF4/0xFF, alpha: 1.0)
         
     }
     
