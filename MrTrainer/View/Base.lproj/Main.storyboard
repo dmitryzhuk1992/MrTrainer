@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Все Упражнения-->
+        <!--Упражнения-->
         <scene sceneID="zjg-Jc-1iK">
             <objects>
                 <tableViewController id="84H-xM-Uuy" customClass="ExercisesTableViewController" customModule="MrTrainer" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,7 +93,7 @@
                             <outlet property="delegate" destination="84H-xM-Uuy" id="uSH-LI-KZs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Все Упражнения" id="YQV-5Z-Pj9">
+                    <navigationItem key="navigationItem" title="Упражнения" id="YQV-5Z-Pj9">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="FDO-Yo-YEH">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="vrq-dk-s4M">
                                 <rect key="frame" x="323" y="4" width="36" height="36"/>
@@ -224,10 +224,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </pageControl>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56U-Qa-rC3" customClass="JT3DScrollView" customModule="JT3DScrollView">
-                                <rect key="frame" x="16" y="410" width="343" height="171"/>
+                                <rect key="frame" x="10" y="411" width="355" height="170"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="56U-Qa-rC3" secondAttribute="height" multiplier="343:171" id="d0A-lu-q7p"/>
+                                    <constraint firstAttribute="width" secondItem="56U-Qa-rC3" secondAttribute="height" multiplier="71:34" id="6bf-Np-cQd"/>
                                 </constraints>
                             </scrollView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Difficulty" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vyk-0W-bBb">
@@ -249,9 +249,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="56U-Qa-rC3" firstAttribute="centerX" secondItem="4OV-hd-S9S" secondAttribute="centerX" id="8wn-ik-7TI"/>
+                            <constraint firstItem="56U-Qa-rC3" firstAttribute="width" secondItem="d1W-1K-9vT" secondAttribute="width" constant="-20" id="CLD-yX-7ni"/>
                             <constraint firstItem="cyM-VB-rNG" firstAttribute="top" secondItem="56U-Qa-rC3" secondAttribute="bottom" id="NN8-Nu-7wn"/>
-                            <constraint firstItem="d1W-1K-9vT" firstAttribute="trailing" secondItem="56U-Qa-rC3" secondAttribute="trailing" constant="16" id="g7K-sK-dyp"/>
-                            <constraint firstItem="56U-Qa-rC3" firstAttribute="leading" secondItem="d1W-1K-9vT" secondAttribute="leading" constant="16" id="u6X-2s-Heo"/>
                             <constraint firstItem="cyM-VB-rNG" firstAttribute="centerX" secondItem="d1W-1K-9vT" secondAttribute="centerX" id="uC9-1h-wa0"/>
                             <constraint firstItem="cyM-VB-rNG" firstAttribute="bottom" secondItem="d1W-1K-9vT" secondAttribute="bottom" id="y1b-HZ-sOw"/>
                         </constraints>
@@ -313,7 +313,7 @@
             </objects>
             <point key="canvasLocation" x="-1144" y="1241"/>
         </scene>
-        <!--Таймер Для Тренировок-->
+        <!--Таймер-->
         <scene sceneID="72B-at-MKs">
             <objects>
                 <viewController id="b5d-Lv-Msw" customClass="TimerViewController" customModule="MrTrainer" customModuleProvider="target" sceneMemberID="viewController">
@@ -408,7 +408,7 @@
                         <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="69Q-xn-Jr1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Таймер Для Тренировок" id="gGk-Dj-buY"/>
+                    <navigationItem key="navigationItem" title="Таймер" id="gGk-Dj-buY"/>
                     <connections>
                         <outlet property="pickerView" destination="44m-Gx-GVz" id="dwL-PI-o2S"/>
                         <outlet property="remainingTimeLabel" destination="ffM-O6-EtB" id="4WQ-ot-QN7"/>
@@ -486,7 +486,7 @@
             </objects>
             <point key="canvasLocation" x="815.20000000000005" y="1610.6446776611695"/>
         </scene>
-        <!--Программы Тренировок-->
+        <!--Программы-->
         <scene sceneID="RUf-AO-5f3">
             <objects>
                 <tableViewController id="QNg-G6-yYH" customClass="ProgramsTableViewController" customModule="MrTrainer" customModuleProvider="target" sceneMemberID="viewController">
@@ -548,7 +548,7 @@
                             <outlet property="delegate" destination="QNg-G6-yYH" id="bo0-Si-Hxr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Программы Тренировок" id="NxZ-40-mJX"/>
+                    <navigationItem key="navigationItem" title="Программы" id="NxZ-40-mJX"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUz-Dc-JP5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -606,7 +606,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIq-Mv-2Am" customClass="JT3DScrollView" customModule="JT3DScrollView">
+                            <scrollView multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIq-Mv-2Am" customClass="JT3DScrollView" customModule="JT3DScrollView">
                                 <rect key="frame" x="16" y="86.5" width="343" height="426.5"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="DHJ-wt-ZgQ">
@@ -701,7 +701,7 @@
                                 <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
-                                <state key="normal" title="Create Program">
+                                <state key="normal" title="Составить Программу">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -804,6 +804,6 @@
         <image name="personalTrainer" width="221" height="221"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ygz-La-R5j"/>
+        <segue reference="2ES-er-u82"/>
     </inferredMetricsTieBreakers>
 </document>

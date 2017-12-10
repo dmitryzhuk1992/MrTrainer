@@ -107,7 +107,7 @@ func initData() {
     //1.эллиптический тренажёр
     let ellipticalMachine: Exercise = Exercise()
     ellipticalMachine.identifier = 0
-    ellipticalMachine.title = "Эллиптический тренажёр".capitalized
+    ellipticalMachine.title = "Эллиптический тренажёр"
     ellipticalMachine.difficulty = "Нормально"
     ellipticalMachine.muscles = ["Квадрицепс","Ягодицы","Бёдра","Икры"]
     ellipticalMachine.thumbnails = [#imageLiteral(resourceName: "ellips_0"),#imageLiteral(resourceName: "ellips_1"),#imageLiteral(resourceName: "ellips_2"),#imageLiteral(resourceName: "ellips_3"),#imageLiteral(resourceName: "ellips_4"),#imageLiteral(resourceName: "ellips_5"),#imageLiteral(resourceName: "ellips_6"),#imageLiteral(resourceName: "ellips_7"),#imageLiteral(resourceName: "ellips_8"),#imageLiteral(resourceName: "ellips_9"),#imageLiteral(resourceName: "ellips_10"),#imageLiteral(resourceName: "ellips_11")]
@@ -123,7 +123,7 @@ func initData() {
     //2.велотренажёр
     let bikeMachine: Exercise = Exercise()
     bikeMachine.identifier = 1
-    bikeMachine.title = "Велотренажёр".capitalized
+    bikeMachine.title = "Велотренажёр"
     bikeMachine.difficulty = "Легко"
     bikeMachine.muscles = ["Квадрицепс","Ягодицы","Икры"]
     bikeMachine.thumbnails = [#imageLiteral(resourceName: "bike_0"),#imageLiteral(resourceName: "bike_1"),#imageLiteral(resourceName: "bike_2"),#imageLiteral(resourceName: "bike_3"),#imageLiteral(resourceName: "bike_4"),#imageLiteral(resourceName: "bike_5"),#imageLiteral(resourceName: "bike_6"),#imageLiteral(resourceName: "bike_7"),#imageLiteral(resourceName: "bike_8"),#imageLiteral(resourceName: "bike_9"),#imageLiteral(resourceName: "bike_10"),#imageLiteral(resourceName: "bike_11")]
@@ -140,7 +140,7 @@ func initData() {
     //3.беговая дорожка
     let runningMachine: Exercise = Exercise()
     runningMachine.identifier = 2
-    runningMachine.title = "Беговая дорожка".capitalized
+    runningMachine.title = "Беговая дорожка"
     runningMachine.difficulty = "Легко"
     runningMachine.muscles = ["Икры","Бёдра"]
     runningMachine.thumbnails = [#imageLiteral(resourceName: "running_0"),#imageLiteral(resourceName: "running_1"),#imageLiteral(resourceName: "running_2"),#imageLiteral(resourceName: "running_3"),#imageLiteral(resourceName: "running_4"),#imageLiteral(resourceName: "running_5"),#imageLiteral(resourceName: "running_6"),#imageLiteral(resourceName: "running_7"),#imageLiteral(resourceName: "running_8"),#imageLiteral(resourceName: "running_9"),#imageLiteral(resourceName: "running_10")]
@@ -155,7 +155,7 @@ func initData() {
     //4.тяга верхнего блока за голову
     let behindTheNeck: Exercise = Exercise()
     behindTheNeck.identifier = 3
-    behindTheNeck.title = "Тяга верхнего блока за голову".capitalized
+    behindTheNeck.title = "Тяга верхнего блока за голову"
     behindTheNeck.difficulty = "Легко"
     behindTheNeck.muscles = ["Широчайшие мышцы","Бицепс","Плечи"]
     behindTheNeck.thumbnails = [#imageLiteral(resourceName: "behindTheNeck_0"),#imageLiteral(resourceName: "behindTheNeck_1"),#imageLiteral(resourceName: "behindTheNeck_2"),#imageLiteral(resourceName: "behindTheNeck_3"),#imageLiteral(resourceName: "behindTheNeck_4"),#imageLiteral(resourceName: "behindTheNeck_5"),#imageLiteral(resourceName: "behindTheNeck_6"),#imageLiteral(resourceName: "behindTheNeck_7"),#imageLiteral(resourceName: "behindTheNeck_8"),#imageLiteral(resourceName: "behindTheNeck_9"),#imageLiteral(resourceName: "behindTheNeck_10"),#imageLiteral(resourceName: "behindTheNeck_11")]
@@ -170,7 +170,7 @@ func initData() {
     //5.тяга штанги в наклоне
     let bentOver: Exercise = Exercise()
     bentOver.identifier = 4
-    bentOver.title = "Тяга штанги в наклоне".capitalized
+    bentOver.title = "Тяга штанги в наклоне"
     bentOver.difficulty = "Легко"
     bentOver.muscles = ["Широчайшие мышцы","Бицепс","Плечи","Спина","Низ спины"]
     bentOver.thumbnails = [#imageLiteral(resourceName: "bent_0"),#imageLiteral(resourceName: "bent_1"),#imageLiteral(resourceName: "bent_2"),#imageLiteral(resourceName: "bent_3"),#imageLiteral(resourceName: "bent_4"),#imageLiteral(resourceName: "bent_5"),#imageLiteral(resourceName: "bent_6"),#imageLiteral(resourceName: "bent_7"),#imageLiteral(resourceName: "bent_8"),#imageLiteral(resourceName: "bent_9"),#imageLiteral(resourceName: "bent_10"),#imageLiteral(resourceName: "bent_11")]
@@ -185,7 +185,7 @@ func initData() {
     //6.становая тяга
     let deadlift: Exercise = Exercise()
     deadlift.identifier = 5
-    deadlift.title = "Становая тяга".capitalized
+    deadlift.title = "Становая тяга"
     deadlift.difficulty = "Нормально"
     deadlift.muscles = ["Низ спины","Предплечья","Квадрицепс","Трапеция","Широчайшие мыщцы","Ягодицы","Бёдра"]
     deadlift.thumbnails = [#imageLiteral(resourceName: "deadlift_0"),#imageLiteral(resourceName: "deadlift_1"),#imageLiteral(resourceName: "deadlift_2"),#imageLiteral(resourceName: "deadlift_3"),#imageLiteral(resourceName: "deadlift_4"),#imageLiteral(resourceName: "deadlift_5"),#imageLiteral(resourceName: "deadlift_6"),#imageLiteral(resourceName: "deadlift_7"),#imageLiteral(resourceName: "deadlift_8"),#imageLiteral(resourceName: "deadlift_9"),#imageLiteral(resourceName: "deadlift_10"),#imageLiteral(resourceName: "deadlift_11")]
@@ -199,7 +199,7 @@ func initData() {
     //7.подтягивания широким хватом
     let pullUp: Exercise = Exercise()
     pullUp.identifier = 6
-    pullUp.title = "Подтягивания широким хватом".capitalized
+    pullUp.title = "Подтягивания широким хватом"
     pullUp.difficulty = "Нормально"
     pullUp.muscles = ["Широчайшие мышцы","Бицепс","Спина"]
     pullUp.thumbnails = [#imageLiteral(resourceName: "pullUp_0"),#imageLiteral(resourceName: "pullUp_1"),#imageLiteral(resourceName: "pullUp_2"),#imageLiteral(resourceName: "pullUp_3"),#imageLiteral(resourceName: "pullUp_4"),#imageLiteral(resourceName: "pullUp_5"),#imageLiteral(resourceName: "pullUp_6"),#imageLiteral(resourceName: "pullUp_7"),#imageLiteral(resourceName: "pullUp_8"),#imageLiteral(resourceName: "pullUp_9"),#imageLiteral(resourceName: "pullUp_10"),#imageLiteral(resourceName: "pullUp_11")]
@@ -213,7 +213,7 @@ func initData() {
     //8.жим штанги из-за головы в машине Смита
     let behindPress: Exercise = Exercise()
     behindPress.identifier = 7
-    behindPress.title = "Жим штанги из-за головы в тренажёре Смита".capitalized
+    behindPress.title = "Жим штанги из-за головы в тренажёре Смита"
     behindPress.difficulty = "Легко"
     behindPress.muscles = ["Плечи","Трицепс"]
     behindPress.thumbnails = [#imageLiteral(resourceName: "behindPress_0"),#imageLiteral(resourceName: "behindPress_1"),#imageLiteral(resourceName: "behindPress_2"),#imageLiteral(resourceName: "behindPress_3"),#imageLiteral(resourceName: "behindPress_4"),#imageLiteral(resourceName: "behindPress_5"),#imageLiteral(resourceName: "behindPress_6"),#imageLiteral(resourceName: "behindPress_7"),#imageLiteral(resourceName: "behindPress_8"),#imageLiteral(resourceName: "behindPress_9"),#imageLiteral(resourceName: "behindPress_10"),#imageLiteral(resourceName: "behindPress_11")]
@@ -228,7 +228,7 @@ func initData() {
     //9.разведение рук с гантелями в стороны
     let dumbbell: Exercise = Exercise()
     dumbbell.identifier = 8
-    dumbbell.title = "Разведение рук с гантелями в стороны".capitalized
+    dumbbell.title = "Разведение рук с гантелями в стороны"
     dumbbell.difficulty = "Легко"
     dumbbell.muscles = ["Плечи","Трицепс"]
     dumbbell.thumbnails = [#imageLiteral(resourceName: "dumbbell_0"),#imageLiteral(resourceName: "dumbbell_1"),#imageLiteral(resourceName: "dumbbell_2"),#imageLiteral(resourceName: "dumbbell_3"),#imageLiteral(resourceName: "dumbbell_4"),#imageLiteral(resourceName: "dumbbell_5"),#imageLiteral(resourceName: "dumbbell_6"),#imageLiteral(resourceName: "dumbbell_7"),#imageLiteral(resourceName: "dumbbell_8"),#imageLiteral(resourceName: "dumbbell_9"),#imageLiteral(resourceName: "dumbbell_10"),#imageLiteral(resourceName: "dumbbell_11")]
@@ -242,7 +242,7 @@ func initData() {
     //10.армейский жим стоя
     let overhead: Exercise = Exercise()
     overhead.identifier = 9
-    overhead.title = "Армейский жим штанги стоя".capitalized
+    overhead.title = "Армейский жим штанги стоя"
     overhead.difficulty = "Тяжело"
     overhead.muscles = ["Плечи","Грудь","Трапеция","Трицепс"]
     overhead.thumbnails = [#imageLiteral(resourceName: "overhead_0"),#imageLiteral(resourceName: "overhead_1"),#imageLiteral(resourceName: "overhead_2"),#imageLiteral(resourceName: "overhead_3"),#imageLiteral(resourceName: "overhead_4"),#imageLiteral(resourceName: "overhead_5"),#imageLiteral(resourceName: "overhead_6"),#imageLiteral(resourceName: "overhead_7"),#imageLiteral(resourceName: "overhead_8"),#imageLiteral(resourceName: "overhead_9"),#imageLiteral(resourceName: "overhead_10")]
@@ -257,7 +257,7 @@ func initData() {
     //11.вертикальная тяга штанги
     let rearUpright: Exercise = Exercise()
     rearUpright.identifier = 10
-    rearUpright.title = "Вертикальная тяга штанги".capitalized
+    rearUpright.title = "Вертикальная тяга штанги"
     rearUpright.difficulty = "Легко"
     rearUpright.muscles = ["Плечи","Трапеция"]
     rearUpright.thumbnails = [#imageLiteral(resourceName: "rearUpright_0"),#imageLiteral(resourceName: "rearUpright_1"),#imageLiteral(resourceName: "rearUpright_2"),#imageLiteral(resourceName: "rearUpright_3"),#imageLiteral(resourceName: "rearUpright_4"),#imageLiteral(resourceName: "rearUpright_5"),#imageLiteral(resourceName: "rearUpright_6"),#imageLiteral(resourceName: "rearUpright_7"),#imageLiteral(resourceName: "rearUpright_8"),#imageLiteral(resourceName: "rearUpright_9"),#imageLiteral(resourceName: "rearUpright_10"),#imageLiteral(resourceName: "rearUpright_11")]
@@ -272,7 +272,7 @@ func initData() {
     //12.приседания со штангой
     let barbellSquat: Exercise = Exercise()
     barbellSquat.identifier = 11
-    barbellSquat.title = "Приседания со штангой".capitalized
+    barbellSquat.title = "Приседания со штангой"
     barbellSquat.difficulty = "Нормально"
     barbellSquat.muscles = ["Квадрицепс","Ягодицы","Бёдра"]
     barbellSquat.thumbnails = [#imageLiteral(resourceName: "barbellSquart_0"),#imageLiteral(resourceName: "barbellSquart_1"),#imageLiteral(resourceName: "barbellSquart_2"),#imageLiteral(resourceName: "barbellSquart_3"),#imageLiteral(resourceName: "barbellSquart_4"),#imageLiteral(resourceName: "barbellSquart_5"),#imageLiteral(resourceName: "barbellSquart_6"),#imageLiteral(resourceName: "barbellSquart_7"),#imageLiteral(resourceName: "barbellSquart_8"),#imageLiteral(resourceName: "barbellSquart_9"),#imageLiteral(resourceName: "barbellSquart_10"),#imageLiteral(resourceName: "barbellSquart_11")]
@@ -287,7 +287,7 @@ func initData() {
     //13.жим ногами в тренажёре лёжа
     let legPress: Exercise = Exercise()
     legPress.identifier = 12
-    legPress.title = "Жим ногами в тренажёре лёжа".capitalized
+    legPress.title = "Жим ногами в тренажёре лёжа"
     legPress.difficulty = "Легко"
     legPress.muscles = ["Квадрицепс","Ягодицы","Бёдра"]
     legPress.thumbnails = [#imageLiteral(resourceName: "legPress_0"),#imageLiteral(resourceName: "legPress_1"),#imageLiteral(resourceName: "legPress_2"),#imageLiteral(resourceName: "legPress_3"),#imageLiteral(resourceName: "legPress_4"),#imageLiteral(resourceName: "legPress_5"),#imageLiteral(resourceName: "legPress_6"),#imageLiteral(resourceName: "legPress_7"),#imageLiteral(resourceName: "legPress_8"),#imageLiteral(resourceName: "legPress_9"),#imageLiteral(resourceName: "legPress_10")]
@@ -302,7 +302,7 @@ func initData() {
     //14.жим штанги лёжа на скамье
     let benchPress: Exercise = Exercise()
     benchPress.identifier = 13
-    benchPress.title = "Жим штанги лёжа на скамье".capitalized
+    benchPress.title = "Жим штанги лёжа на скамье"
     benchPress.difficulty = "Нормально"
     benchPress.muscles = ["Грудь","Плечи","Трицепс"]
     benchPress.thumbnails = [#imageLiteral(resourceName: "benchPress_0"),#imageLiteral(resourceName: "benchPress_1"),#imageLiteral(resourceName: "benchPress_2"),#imageLiteral(resourceName: "benchPress_3"),#imageLiteral(resourceName: "benchPress_4"),#imageLiteral(resourceName: "benchPress_5"),#imageLiteral(resourceName: "benchPress_6"),#imageLiteral(resourceName: "benchPress_7"),#imageLiteral(resourceName: "benchPress_8"),#imageLiteral(resourceName: "benchPress_9")]
@@ -316,7 +316,7 @@ func initData() {
     //15.сведение рук в кроссовере
     let cableCrossover: Exercise = Exercise()
     cableCrossover.identifier = 14
-    cableCrossover.title = "Сведение рук в кроссовере".capitalized
+    cableCrossover.title = "Сведение рук в кроссовере"
     cableCrossover.difficulty = "Легко"
     cableCrossover.muscles = ["Грудь","Плечи"]
     cableCrossover.thumbnails = [#imageLiteral(resourceName: "cableCrossover_0"),#imageLiteral(resourceName: "cableCrossover_1"),#imageLiteral(resourceName: "cableCrossover_2"),#imageLiteral(resourceName: "cableCrossover_3"),#imageLiteral(resourceName: "cableCrossover_4"),#imageLiteral(resourceName: "cableCrossover_5"),#imageLiteral(resourceName: "cableCrossover_6"),#imageLiteral(resourceName: "cableCrossover_7"),#imageLiteral(resourceName: "cableCrossover_8"),#imageLiteral(resourceName: "cableCrossover_9"),#imageLiteral(resourceName: "cableCrossover_10"),#imageLiteral(resourceName: "cableCrossover_11")]
@@ -331,7 +331,7 @@ func initData() {
     //16.отжимания на брусьях
     let dips: Exercise = Exercise()
     dips.identifier = 15
-    dips.title = "Отжимания на брусьях".capitalized
+    dips.title = "Отжимания на брусьях"
     dips.difficulty = "Легко"
     dips.muscles = ["Трицепс","Грудь","Плечи"]
     dips.thumbnails = [#imageLiteral(resourceName: "dips_0"),#imageLiteral(resourceName: "dips_1"),#imageLiteral(resourceName: "dips_2"),#imageLiteral(resourceName: "dips_3"),#imageLiteral(resourceName: "dips_4"),#imageLiteral(resourceName: "dips_5"),#imageLiteral(resourceName: "dips_6"),#imageLiteral(resourceName: "dips_7"),#imageLiteral(resourceName: "dips_8"),#imageLiteral(resourceName: "dips_9")]
@@ -345,7 +345,7 @@ func initData() {
     //17.скручивания на наклонной скамье
     let inclineSitUp: Exercise = Exercise()
     inclineSitUp.identifier = 16
-    inclineSitUp.title = "Скручивания на наклонной скамье".capitalized
+    inclineSitUp.title = "Скручивания на наклонной скамье"
     inclineSitUp.difficulty = "Легко"
     inclineSitUp.muscles = ["Пресс","Низ спины"]
     inclineSitUp.thumbnails = [#imageLiteral(resourceName: "inclineSitUp_0"),#imageLiteral(resourceName: "inclineSitUp_1"),#imageLiteral(resourceName: "inclineSitUp_2"),#imageLiteral(resourceName: "inclineSitUp_3"),#imageLiteral(resourceName: "inclineSitUp_4"),#imageLiteral(resourceName: "inclineSitUp_5"),#imageLiteral(resourceName: "inclineSitUp_6"),#imageLiteral(resourceName: "inclineSitUp_7"),#imageLiteral(resourceName: "inclineSitUp_8"),#imageLiteral(resourceName: "inclineSitUp_9"),#imageLiteral(resourceName: "inclineSitUp_10"),#imageLiteral(resourceName: "inclineSitUp_11")]
@@ -360,7 +360,7 @@ func initData() {
     //18.подъём ног в тренажёре
     let kneeRaise: Exercise = Exercise()
     kneeRaise.identifier = 17
-    kneeRaise.title = "Подъём ног в тренажёре".capitalized
+    kneeRaise.title = "Подъём ног в тренажёре"
     kneeRaise.difficulty = "Легко"
     kneeRaise.muscles = ["Пресс","Низ спины"]
     kneeRaise.thumbnails = [#imageLiteral(resourceName: "kneeRaise_0"),#imageLiteral(resourceName: "kneeRaise_1"),#imageLiteral(resourceName: "kneeRaise_2"),#imageLiteral(resourceName: "kneeRaise_3"),#imageLiteral(resourceName: "kneeRaise_4"),#imageLiteral(resourceName: "kneeRaise_5"),#imageLiteral(resourceName: "kneeRaise_6"),#imageLiteral(resourceName: "kneeRaise_7"),#imageLiteral(resourceName: "kneeRaise_8"),#imageLiteral(resourceName: "kneeRaise_9"),#imageLiteral(resourceName: "kneeRaise_10"),#imageLiteral(resourceName: "kneeRaise_11")]
@@ -374,7 +374,7 @@ func initData() {
     //19.попеременный подъём гантелей на бицепс хватом «молоток»
     let hummerCurl: Exercise = Exercise()
     hummerCurl.identifier = 18
-    hummerCurl.title = "Попеременный подъём гантелей на бицепс хватом \"молоток\"".capitalized
+    hummerCurl.title = "Попеременный подъём гантелей на бицепс хватом \"молоток\""
     hummerCurl.difficulty = "Легко"
     hummerCurl.muscles = ["Бицепс","Предплечья"]
     hummerCurl.thumbnails = [#imageLiteral(resourceName: "hummerCurl_0"),#imageLiteral(resourceName: "hummerCurl_1"),#imageLiteral(resourceName: "hummerCurl_2"),#imageLiteral(resourceName: "hummerCurl_3"),#imageLiteral(resourceName: "hummerCurl_4"),#imageLiteral(resourceName: "hummerCurl_5"),#imageLiteral(resourceName: "hummerCurl_6"),#imageLiteral(resourceName: "hummerCurl_7"),#imageLiteral(resourceName: "hummerCurl_8"),#imageLiteral(resourceName: "hummerCurl_9"),#imageLiteral(resourceName: "hummerCurl_10"),#imageLiteral(resourceName: "hummerCurl_11"),#imageLiteral(resourceName: "hummerCurl_12"),#imageLiteral(resourceName: "hummerCurl_13")]
@@ -389,7 +389,7 @@ func initData() {
     //20.разгибания рук на трицепс на верхнем блоке
     let triceps: Exercise = Exercise()
     triceps.identifier = 19
-    triceps.title = "Разгибания рук на трицепс на верхнем блоке".capitalized
+    triceps.title = "Разгибания рук на трицепс на верхнем блоке"
     triceps.difficulty = "Легко"
     triceps.muscles = ["Трицепс"]
     triceps.thumbnails = [#imageLiteral(resourceName: "tricepsPushdown_0"),#imageLiteral(resourceName: "tricepsPushdown_1"),#imageLiteral(resourceName: "tricepsPushdown_2"),#imageLiteral(resourceName: "tricepsPushdown_3"),#imageLiteral(resourceName: "tricepsPushdown_4"),#imageLiteral(resourceName: "tricepsPushdown_5"),#imageLiteral(resourceName: "tricepsPushdown_6"),#imageLiteral(resourceName: "tricepsPushdown_7"),#imageLiteral(resourceName: "tricepsPushdown_8"),#imageLiteral(resourceName: "tricepsPushdown_9")]
@@ -404,7 +404,7 @@ func initData() {
     //для начинающих
     let forBeginers: Program = Program()
     forBeginers.identifier = 0
-    forBeginers.title = "Для новичков".capitalized
+    forBeginers.title = "Для новичков"
     forBeginers.forMuscles = ["quads"]
     forBeginers.image = #imageLiteral(resourceName: "forBeginers")
     forBeginers.cost = "Бесплатно".uppercased()
@@ -421,7 +421,7 @@ func initData() {
     //для снижения веса
     let forWeightLoss: Program = Program()
     forWeightLoss.identifier = 1
-    forWeightLoss.title = "Для снижения веса".capitalized
+    forWeightLoss.title = "Для снижения веса"
     forWeightLoss.image = #imageLiteral(resourceName: "forWeightLoss")
     forWeightLoss.cost = "Бесплатно".uppercased()
     
@@ -435,7 +435,7 @@ func initData() {
     //общеукрепляющая
     let general: Program = Program()
     general.identifier = 2
-    general.title = "Общеукрепляющая".capitalized
+    general.title = "Общеукрепляющая"
     general.image = #imageLiteral(resourceName: "general")
     general.cost = "Бесплатно".uppercased()
     
@@ -451,7 +451,7 @@ func initData() {
     //упругие ягодицы
     let elasticButtocks: Program = Program()
     elasticButtocks.identifier = 3
-    elasticButtocks.title = "Упругие ягодицы".capitalized
+    elasticButtocks.title = "Упругие ягодицы"
     elasticButtocks.image = #imageLiteral(resourceName: "elasticButtocks")
     elasticButtocks.cost = "Бесплатно".uppercased()
     
@@ -463,7 +463,7 @@ func initData() {
     //для профессионалов
     let forProfessionals: Program = Program()
     forProfessionals.identifier = 4
-    forProfessionals.title = "Для профессионалов".capitalized
+    forProfessionals.title = "Для профессионалов"
     forProfessionals.image = #imageLiteral(resourceName: "forProfessionals")
     forProfessionals.cost = "Бесплатно".uppercased()
     
@@ -478,7 +478,7 @@ func initData() {
     //изящная фигура
     let neatFigure: Program = Program()
     neatFigure.identifier = 5
-    neatFigure.title = "Изящная фигура".capitalized
+    neatFigure.title = "Изящная фигура"
     neatFigure.image = #imageLiteral(resourceName: "neatFigure")
     neatFigure.cost = "Бесплатно".uppercased()
     
@@ -494,7 +494,7 @@ func initData() {
     //рельефный пресс
     let sixpackAbs: Program = Program()
     sixpackAbs.identifier = 6
-    sixpackAbs.title = "Рельефный пресс".capitalized
+    sixpackAbs.title = "Рельефный пресс"
     sixpackAbs.image = #imageLiteral(resourceName: "sixpackAbs")
     sixpackAbs.cost = "Бесплатно".uppercased()
     
@@ -506,7 +506,7 @@ func initData() {
     //для бодибилдеров
     let forBodybuilders: Program = Program()
     forBodybuilders.identifier = 7
-    forBodybuilders.title = "Для бодибилдеров".capitalized
+    forBodybuilders.title = "Для бодибилдеров"
     forBodybuilders.image = #imageLiteral(resourceName: "forBodybuilders")
     forBodybuilders.cost = "Бесплатно".uppercased()
     

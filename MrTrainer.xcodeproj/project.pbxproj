@@ -50,14 +50,12 @@
 		49185D9D1FC76D300019D06F /* PersonalTrainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTrainerViewController.swift; sourceTree = "<group>"; };
 		49185DA31FC81E800019D06F /* CardsCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		49185DA51FC81E9A0019D06F /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
-		492807451FCB5466008AEB23 /* Question+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataClass.swift"; path = "/Users/dmitriyzhuk/Documents/Development/Projects/MrTrainer/MrTrainer/Model/Question+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		492807471FCB5467008AEB23 /* UserAnswer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserAnswer+CoreDataClass.swift"; path = "/Users/dmitriyzhuk/Documents/Development/Projects/MrTrainer/MrTrainer/Model/UserAnswer+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		492807491FCB5467008AEB23 /* UserAnswer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserAnswer+CoreDataProperties.swift"; path = "/Users/dmitriyzhuk/Documents/Development/Projects/MrTrainer/MrTrainer/Model/UserAnswer+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		492807451FCB5466008AEB23 /* Question+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Question+CoreDataClass.swift"; sourceTree = "<group>"; };
+		492807471FCB5467008AEB23 /* UserAnswer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAnswer+CoreDataClass.swift"; sourceTree = "<group>"; };
+		492807491FCB5467008AEB23 /* UserAnswer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAnswer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		492807501FCB58E7008AEB23 /* PossibleAnswers+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PossibleAnswers+CoreDataClass.swift"; sourceTree = "<group>"; };
 		492807511FCB58E7008AEB23 /* PossibleAnswers+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PossibleAnswers+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4939DB0A1FDC49C800E8740A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		4939DB0B1FDC49C800E8740A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		4939DB0D1FDCA70300E8740A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		4946C1561FA1F14F009157C3 /* MrTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MrTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4946C1591FA1F14F009157C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4946C15E1FA1F150009157C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -359,8 +357,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				4946C15E1FA1F150009157C3 /* Base */,
-				4939DB0B1FDC49C800E8740A /* ru */,
-				4939DB0D1FDCA70300E8740A /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -426,7 +422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -478,7 +474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

@@ -23,6 +23,7 @@ class SurveyViewController: UIViewController, UIScrollViewDelegate {
 
     var questions: [Question]?
     var currentPage = Int()
+    var allPages = Int()
     
     var fetchedResultsController: NSFetchedResultsController<Question> =
         CoreDataManager.fetchedResultsController(entityName: "Question",
@@ -39,51 +40,83 @@ class SurveyViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
+        surveyScrollView?.removeFromSuperview()
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func answer1Action(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        sender.isSelected = true
         answer2Button.isSelected = false
         answer3Button.isSelected = false
         answer4Button.isSelected = false
-        setUserAnswer(sender)
+        saveUserAnswer(sender)
+        showNextPage()
     }
     @IBAction func answer2Action(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        sender.isSelected = true
         answer1Button.isSelected = false
         answer3Button.isSelected = false
         answer4Button.isSelected = false
-        setUserAnswer(sender)
+        saveUserAnswer(sender)
+        showNextPage()
     }
     @IBAction func answer3Action(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        sender.isSelected = true
         answer1Button.isSelected = false
         answer2Button.isSelected = false
         answer4Button.isSelected = false
-        setUserAnswer(sender)
+        saveUserAnswer(sender)
+        showNextPage()
     }
     @IBAction func answer4Action(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        sender.isSelected = true
         answer1Button.isSelected = false
         answer2Button.isSelected = false
         answer3Button.isSelected = false
-        setUserAnswer(sender)
+        saveUserAnswer(sender)
+        showNextPage()
+    }
+    
+    private func showNextPage() {
+        if currentPage < allPages - 1 {
+            guard let svc = surveyScrollView else { return }
+            let visibleRect = CGRect(x: svc.bounds.origin.x + svc.frame.width, y: 0, width: svc.frame.width, height: svc.frame.height)
+            svc.scrollRectToVisible(visibleRect, animated: true)
+            
+            currentPage = Int(round(visibleRect.origin.x / svc.frame.size.width))
+            itemLabel.text = "\((currentPage) + 1) / \(allPages)"
+            
+            guard let possibleAnswers = questions?[currentPage].possibleAnswers?.array[0] as! PossibleAnswers? else { return }
+            guard let answers = possibleAnswers.answers else { return }
+            setUpButtons(with: answers)
+            
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveLinear, animations: {
+                self.answerButtonsStack.alpha = 0
+            }, completion: {(_) in
+                self.answer1Button.isSelected = false
+                self.answer2Button.isSelected = false
+                self.answer3Button.isSelected = false
+                self.answer4Button.isSelected = false
+            })
+            UIView.animate(withDuration: 0.6, delay: 0.1, options: .curveLinear, animations: {
+                self.answerButtonsStack.alpha = 1
+            }, completion: nil)
+        }
     }
     
     @IBAction func createProgramAction(_ sender: UIButton) {
         print("CREATE")
     }
     
-    private func setUserAnswer(_ sender: UIButton) {
-        if let _ = questions![currentPage].userAnswer {
-            questions![currentPage].userAnswer?.answer = sender.currentTitle
+    private func saveUserAnswer(_ sender: UIButton) {
+        if let userAnswer = questions?[currentPage].userAnswer {
+            userAnswer.answer = sender.currentTitle
+            saveContext()
         } else {
-            print("ERROR")
+            print("ERROR SAVE ANSWER")
         }
-        saveContext()
         if currentPage == questions!.count - 1 {
-            UIView.animate(withDuration: 1.6, delay: 2.0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 1.6, delay: 0.1, options: .curveLinear, animations: {
                 self.createProgramOutlet.alpha = 1
             }, completion: {(complete) in
                 self.createProgramOutlet.isEnabled = true
@@ -116,6 +149,7 @@ class SurveyViewController: UIViewController, UIScrollViewDelegate {
         }
         
         self.questions = questions
+        self.allPages = questions.count
     }
     
     //creating page with textView for surveyScrollView
@@ -148,35 +182,7 @@ class SurveyViewController: UIViewController, UIScrollViewDelegate {
         textView.text = text
         scrollView.addSubview(textView)
     }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveLinear, animations: {
-            self.answerButtonsStack.alpha = 0
-        }, completion: nil)
-        
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        answer1Button.isSelected = false
-        answer2Button.isSelected = false
-        answer3Button.isSelected = false
-        answer4Button.isSelected = false
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
-        let allPages = questions!.count
-        itemLabel.text = "\((currentPage) + 1) / \(allPages)"
-        
-        guard let possibleAnswers = questions![currentPage].possibleAnswers?.array[0] as! PossibleAnswers? else { return }
-        guard let answers = possibleAnswers.answers else { return }
-        setUpButtons(with: answers)
-        
-        UIView.animate(withDuration: 0.6, delay: 0.1, options: .curveLinear, animations: {
-            self.answerButtonsStack.alpha = 1
-        }, completion: nil)
-    }
-    
+
     //hidden answers buttons
     private func setUpButtons(with titles: [String]) {
         switch titles.count {

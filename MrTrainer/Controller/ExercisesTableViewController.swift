@@ -36,7 +36,7 @@ class ExercisesTableViewController: UITableViewController {
         if sender.isSelected {
             showExercisesWithParams(showFavourites: true, predicate: "isFavourite == true", title: "Избранное")
         } else {
-            showExercisesWithParams(showFavourites: false, predicate: nil, title: "Все Упражнения")
+            showExercisesWithParams(showFavourites: false, predicate: nil, title: "Упражнения")
         }
     }
     
@@ -144,22 +144,23 @@ class ExercisesTableViewController: UITableViewController {
         var favouriteAction = UITableViewRowAction()
     
         if showFavourites == false {
-            favouriteAction = UITableViewRowAction(style: .default, title: "Добавить В Избранное") { (action, indexPath) in
+            favouriteAction = UITableViewRowAction(style: .default, title: "Добавить\nв избранное") { (action, indexPath) in
                 exercise.isFavourite = true
                 //CoreDataManager.saveContext()
                 self.saveContext()
+                tableView.deselectRow(at: indexPath, animated: true)
             }
             favouriteAction.backgroundColor = UIColor(red: 0xFF/0xFF, green: 0xC1/0xFF, blue: 0x07/0xFF, alpha: 1.0)
         } else {
-            favouriteAction = UITableViewRowAction(style: .default, title: "Удалить Из Избранного") { (action, indexPath) in
+            favouriteAction = UITableViewRowAction(style: .default, title: "Удалить\nиз избранного") { (action, indexPath) in
                 exercise.isFavourite = false
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 //CoreDataManager.saveContext()
                 self.saveContext()
                 self.performFetch()
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                
             }
         }
-
         return [favouriteAction]
     }
     
