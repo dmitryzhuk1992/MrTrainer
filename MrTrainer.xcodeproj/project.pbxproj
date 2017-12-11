@@ -27,6 +27,7 @@
 		4946C16E1FA20E75009157C3 /* ExercisesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946C16D1FA20E75009157C3 /* ExercisesTableViewCell.swift */; };
 		494EF4BF1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EF4BE1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift */; };
 		4959F1691FD1A7E900940200 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959F1681FD1A7E900940200 /* Question+CoreDataProperties.swift */; };
+		497F2D0A1FDDE57E00B1225F /* TimerCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F2D091FDDE57E00B1225F /* TimerCircleView.swift */; };
 		499D79441FC35F73001444B0 /* ProgramsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D79431FC35F73001444B0 /* ProgramsTableViewController.swift */; };
 		499D79481FC35FDD001444B0 /* ProgramsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D79471FC35FDD001444B0 /* ProgramsTableViewCell.swift */; };
 		49A10C271FD497EF004F90DD /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A10C261FD497EF004F90DD /* TimerViewController.swift */; };
@@ -65,6 +66,7 @@
 		4946C16D1FA20E75009157C3 /* ExercisesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTableViewCell.swift; sourceTree = "<group>"; };
 		494EF4BE1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewController.swift; sourceTree = "<group>"; };
 		4959F1681FD1A7E900940200 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Question+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		497F2D091FDDE57E00B1225F /* TimerCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCircleView.swift; sourceTree = "<group>"; };
 		499D79431FC35F73001444B0 /* ProgramsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsTableViewController.swift; sourceTree = "<group>"; };
 		499D79471FC35FDD001444B0 /* ProgramsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsTableViewCell.swift; sourceTree = "<group>"; };
 		49A10C261FD497EF004F90DD /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				4946C1621FA1F150009157C3 /* LaunchScreen.storyboard */,
 				4946C15D1FA1F150009157C3 /* Main.storyboard */,
 				49185DA31FC81E800019D06F /* CardsCollectionViewLayout.swift */,
+				497F2D091FDDE57E00B1225F /* TimerCircleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				494EF4BF1FA3DF7700CF8EC3 /* ExerciseDetailViewController.swift in Sources */,
 				4959F1691FD1A7E900940200 /* Question+CoreDataProperties.swift in Sources */,
 				4928074F1FCB5467008AEB23 /* UserAnswer+CoreDataProperties.swift in Sources */,
+				497F2D0A1FDDE57E00B1225F /* TimerCircleView.swift in Sources */,
 				49FF89E51FC3131200BF1C2A /* Exercise+CoreDataProperties.swift in Sources */,
 				490F47BC1FC2BBDC007D16E6 /* Program+CoreDataClass.swift in Sources */,
 				49185DA41FC81E810019D06F /* CardsCollectionViewLayout.swift in Sources */,

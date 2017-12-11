@@ -90,7 +90,7 @@ class ExercisesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.hidesBarsOnSwipe = true
+        //navigationController?.hidesBarsOnSwipe = true
     }
 
     // MARK: - Table view data source
@@ -133,7 +133,6 @@ class ExercisesTableViewController: UITableViewController {
                 cell.thumbnailImageView.image = animatedThumbnail
             }
         }
-        
         return cell
     }
     

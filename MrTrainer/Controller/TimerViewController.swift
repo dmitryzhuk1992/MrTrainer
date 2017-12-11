@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -17,23 +18,36 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var startButtonOutlet: UIButton!
     
     
-    @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var pickerView: UIPickerView!
+    //@IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var workPickerView: UIPickerView!
+    @IBOutlet weak var restPickerView: UIPickerView!
     
-    let workTimes = ["OFF","30 sec", "1 min", "2 min", "3 min", "4 min", "5 min", "6 min", "7 min", "8 min", "9 min", "10 min", "15 min", "20 min", "25 min", "30 min", "1 hour"]
+    let workTimes = ["OFF","30 sec", "1 min", "2 min", "3 min", "4 min", "5 min", "6 min", "7 min", "8 min", "9 min", "10 min", "15 min", "20 min", "25 min", "30 min", "60 min"]
+    let restTimes = ["OFF","30 sec", "1 min", "2 min", "3 min", "4 min", "5 min", "6 min", "7 min", "8 min", "9 min", "10 min", "15 min", "20 min", "25 min", "30 min", "60 min"]
+    let repeatCounts = ["OFF","x2","x3","x4","x5","x6","x7","x8","x9","x10"]
     
     var timer = Timer()
+    //let circleView: TimerCircleView!
     
     var repeatCount: Int {
         get {
-            guard let string = (repeatCountLabel.text?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) else { return 0 }
-            guard let repeats = Int(string) else { return 0 }
+            guard repeatCountLabel.text != "OFF" else { return 1 }
+            guard let string = repeatCountLabel.text?.components(separatedBy: "x") else { return 1 }
+            guard let repeats = Int(string.first!) else { return 1 }
             return repeats
         }
         set {
+            guard newValue != 0 else {
+                repeatCountLabel.text = "OFF"
+                return
+            }
             repeatCountLabel.text = "x\(newValue)"
         }
     }
+    
+    var overallTime = Int()
+    var state = Int()
+    var repeats = Int()
     
     var workTime: Int { get { return getTime(from: workTimeLabel) }
                         set { setTime(with: newValue, to: workTimeLabel) }}
@@ -41,23 +55,39 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var restTime: Int { get { return getTime(from: restTimeLabel) }
                         set {setTime(with: newValue, to: restTimeLabel) }}
     
-    var remainingTime: Int { get { return getTime(from: remainingTimeLabel) }
-                             set { setTime(with: newValue, to: remainingTimeLabel) }}
+    var remainingTime: Int { get { return getRemainingTime(from: remainingTimeLabel) }
+                             set { setRemainingTime(with: newValue, to: remainingTimeLabel) }}
     
-    var overallTime = Int()
-    var state = Int()
-    var repeats = Int()
-    
-    //getter for timeLabels
+    //getter for remainingTimeLabel
     private func getTime(from timeLabel: UILabel) -> Int {
+        guard timeLabel.text != "OFF" else { return 0 }
+        guard var time = timeLabel.text?.components(separatedBy: " ") else { return 0 }
+        guard let value = Int(time.removeFirst()) else { return 0 }
+        guard let secOrMin = time.last else { return 0 }
+        return secOrMin == "sec" ? value : value * 60
+    }
+    
+    //setter for remainingTimeLabel
+    private func setTime(with newValue: Int, to timeLabel: UILabel) {
+        guard newValue != 0 else {
+            timeLabel.text = "OFF"
+            return
+        }
+        let min = Int(newValue / 60)
+        let sec = newValue - min * 60
+        (min == 0) ? (timeLabel.text = "\(sec) sec") : (timeLabel.text = "\(min) min")
+    }
+    
+    //getter for remainingTimeLabel
+    private func getRemainingTime(from timeLabel: UILabel) -> Int {
         guard var time = timeLabel.text?.components(separatedBy: ":") else { return 0 }
         guard let min = Int(time.removeFirst()) else { return 0 }
         guard let sec = Int(time.last!) else { return 0 }
         return min * 60 + sec
     }
     
-    //setter for timeLabels
-    private func setTime(with newValue: Int, to timeLabel: UILabel) {
+    //setter for remainingTimeLabel
+    private func setRemainingTime(with newValue: Int, to timeLabel: UILabel) {
         let min = Int(newValue / 60)
         let sec = newValue - min * 60
         
@@ -88,6 +118,7 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
+        startButtonOutlet.isSelected = false
         timer.invalidate()
         overallTime = calculationOverallTime(work: workTime, rest: restTime, repeats: repeatCount)
         state = 0
@@ -142,16 +173,6 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             changeNextTimeInterval()
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        workTime = 5
-        restTime = 3
-        repeatCount = 1
-        
-        overallTime = calculationOverallTime(work: workTime, rest: restTime, repeats: repeatCount)
-        changeNextTimeInterval()
-    }
     
     //handler func for timer
     @objc private func handler() {
@@ -162,25 +183,88 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
         remainingTime -= 1
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        workTime = 0
+        restTime = 0
+        repeatCount = 0
+        repeats = repeatCount
+        
+        overallTime = calculationOverallTime(work: workTime, rest: restTime, repeats: repeatCount)
+        changeNextTimeInterval()
+        
+        //customization navigation bar
+        navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+        navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        navigationController?.navigationBar.layer.shadowRadius = 4.0
+        navigationController?.navigationBar.layer.shadowOpacity = 1.0
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        setupCircleView()
+    }
+    
+    func setupCircleView() {
+        let circleView = TimerCircleView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        circleView.backgroundColor = .clear
+        circleView.sendSubview(toBack: remainingTimeLabel)
+        circleView.isUserInteractionEnabled = false
+        view.addSubview(circleView)
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return workTimes[row]
+        switch pickerView.tag {
+        case 0:
+            return workTimes[row]
+        case 1:
+            return restTimes[row]
+        case 2:
+            return repeatCounts[row]
+        default:
+            return ""
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return workTimes.count
+        switch pickerView.tag {
+        case 0:
+            return workTimes.count
+        case 1:
+            return restTimes.count
+        case 2:
+            return repeatCounts.count
+        default:
+            return 0
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        workTimeLabel.text = workTimes[row]
+        switch pickerView.tag {
+        case 0:
+            workTimeLabel.text = workTimes[row]
+        case 1:
+            restTimeLabel.text = restTimes[row]
+        case 2:
+            repeatCountLabel.text = repeatCounts[row]
+        default:
+            break
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: workTimes[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.init(red: 0x03/0xFF, green: 0xA9/0xFF, blue: 0xF4/0xFF, alpha: 1.0) ])
+        switch pickerView.tag {
+        case 0:
+            return NSAttributedString(string: workTimes[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.init(red: 0x03/0xFF, green: 0xA9/0xFF, blue: 0xF4/0xFF, alpha: 1.0) ])
+        case 1:
+            return NSAttributedString(string: restTimes[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.init(red: 0x03/0xFF, green: 0xA9/0xFF, blue: 0xF4/0xFF, alpha: 1.0) ])
+        case 2:
+            return NSAttributedString(string: repeatCounts[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.init(red: 0x03/0xFF, green: 0xA9/0xFF, blue: 0xF4/0xFF, alpha: 1.0) ])
+        default:
+            return nil
+        }
     }
-
 }

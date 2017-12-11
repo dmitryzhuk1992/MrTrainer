@@ -24,20 +24,12 @@ class SurveyViewController: UIViewController, UIScrollViewDelegate {
     var questions: [Question]?
     var currentPage = Int()
     var allPages = Int()
+    var arrayOfButtons = [UIButton]()
     
     var fetchedResultsController: NSFetchedResultsController<Question> =
         CoreDataManager.fetchedResultsController(entityName: "Question",
                                                  keyForSort: "id",
                                                  predicate: nil) as! NSFetchedResultsController<Question>
-    
-    //executes the fetch request
-    private func performFetch() {
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print("Error perform fetch: \(error.localizedDescription)")
-        }
-    }
     
     @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
         surveyScrollView?.removeFromSuperview()
@@ -45,102 +37,44 @@ class SurveyViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func answer1Action(_ sender: UIButton) {
-        sender.isSelected = true
-        answer2Button.isSelected = false
-        answer3Button.isSelected = false
-        answer4Button.isSelected = false
-        saveUserAnswer(sender)
-        showNextPage()
+        answerAction(sender)
     }
     @IBAction func answer2Action(_ sender: UIButton) {
-        sender.isSelected = true
-        answer1Button.isSelected = false
-        answer3Button.isSelected = false
-        answer4Button.isSelected = false
-        saveUserAnswer(sender)
-        showNextPage()
+        answerAction(sender)
     }
     @IBAction func answer3Action(_ sender: UIButton) {
-        sender.isSelected = true
-        answer1Button.isSelected = false
-        answer2Button.isSelected = false
-        answer4Button.isSelected = false
-        saveUserAnswer(sender)
-        showNextPage()
+        answerAction(sender)
     }
     @IBAction func answer4Action(_ sender: UIButton) {
-        sender.isSelected = true
-        answer1Button.isSelected = false
-        answer2Button.isSelected = false
-        answer3Button.isSelected = false
-        saveUserAnswer(sender)
-        showNextPage()
+        answerAction(sender)
     }
     
-    private func showNextPage() {
-        if currentPage < allPages - 1 {
-            guard let svc = surveyScrollView else { return }
-            let visibleRect = CGRect(x: svc.bounds.origin.x + svc.frame.width, y: 0, width: svc.frame.width, height: svc.frame.height)
-            svc.scrollRectToVisible(visibleRect, animated: true)
-            
-            currentPage = Int(round(visibleRect.origin.x / svc.frame.size.width))
-            itemLabel.text = "\((currentPage) + 1) / \(allPages)"
-            
-            guard let possibleAnswers = questions?[currentPage].possibleAnswers?.array[0] as! PossibleAnswers? else { return }
-            guard let answers = possibleAnswers.answers else { return }
-            setUpButtons(with: answers)
-            
-            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveLinear, animations: {
-                self.answerButtonsStack.alpha = 0
-            }, completion: {(_) in
-                self.answer1Button.isSelected = false
-                self.answer2Button.isSelected = false
-                self.answer3Button.isSelected = false
-                self.answer4Button.isSelected = false
-            })
-            UIView.animate(withDuration: 0.6, delay: 0.1, options: .curveLinear, animations: {
-                self.answerButtonsStack.alpha = 1
-            }, completion: nil)
-        }
+    private func answerAction(_ sender: UIButton) {
+        sender.isHighlighted = true
+        saveUserAnswer(sender)
+        showNextPage()
     }
     
     @IBAction func createProgramAction(_ sender: UIButton) {
         print("CREATE")
     }
-    
-    private func saveUserAnswer(_ sender: UIButton) {
-        if let userAnswer = questions?[currentPage].userAnswer {
-            userAnswer.answer = sender.currentTitle
-            saveContext()
-        } else {
-            print("ERROR SAVE ANSWER")
-        }
-        if currentPage == questions!.count - 1 {
-            UIView.animate(withDuration: 1.6, delay: 0.1, options: .curveLinear, animations: {
-                self.createProgramOutlet.alpha = 1
-            }, completion: {(complete) in
-                self.createProgramOutlet.isEnabled = true
-            })
-        }
-    }
-    
-    //CoreDataManager.saveContext()
-    private func saveContext() {
-        do {
-            try self.fetchedResultsController.managedObjectContext.save()
-        } catch let error as NSError {
-            print("Can't saved context: \(error.localizedDescription)")
-        }
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         performFetch()
         
+        arrayOfButtons = [answer1Button, answer2Button, answer3Button, answer4Button]
+        arrayOfButtons.forEach { (button) in
+            button.setTitleColor( .black, for: .highlighted)
+            button.setBackgroundColor(color: UIColor(red: 0x03/0xFF, green: 0xA9/0xFF, blue: 0xF4/0xFF, alpha: 1.0), forState: .highlighted)
+        }
+        setUpButtons(with: ["Мужчина","Женщина"])
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         surveyScrollView?.effect = .carousel
         surveyScrollView?.delegate = self
-        
-        setUpButtons(with: [])
         
         guard let questions = fetchedResultsController.fetchedObjects else { return }
         itemLabel.text = "1 / \(questions.count)"
@@ -172,52 +106,99 @@ class SurveyViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(view)
         scrollView.contentSize = CGSize(width: x + width, height: height)
         
-        let textView = UITextView(frame: CGRect(x: x, y: height * 0.05, width: width, height: height * 0.9))
-        textView.isEditable = false
-        textView.isSelectable = false
-        textView.backgroundColor = .clear
-        textView.font = UIFont(name: "Apple SD Gothic Neo", size: 24)
-        textView.textAlignment = .center
-        textView.alignmentRect(forFrame: CGRect(x: x * 1.2, y: height * 0.2, width: width * 0.6, height: height * 0.6))
-        textView.text = text
-        scrollView.addSubview(textView)
+        let textLabel = UILabel(frame: CGRect(x: x, y: height * 0.05, width: width, height: height * 0.2))
+        textLabel.backgroundColor = .clear
+        textLabel.font = UIFont(name: "Apple SD Gothic Neo", size: 24)
+        textLabel.textAlignment = .center
+        textLabel.numberOfLines = 0
+        textLabel.adjustsFontSizeToFitWidth = true
+        textLabel.text = text
+        scrollView.addSubview(textLabel)
     }
-
+    
     //hidden answers buttons
     private func setUpButtons(with titles: [String]) {
-        switch titles.count {
-        case 4:
-            answer1Button.isHidden = false
-            answer2Button.isHidden = false
-            answer3Button.isHidden = false
-            answer4Button.isHidden = false
-            answer1Button.setTitle(titles[0], for: .normal)
-            answer2Button.setTitle(titles[1], for: .normal)
-            answer3Button.setTitle(titles[2], for: .normal)
-            answer4Button.setTitle(titles[3], for: .normal)
-        case 3:
-            answer1Button.isHidden = true
-            answer2Button.isHidden = false
-            answer3Button.isHidden = false
-            answer4Button.isHidden = false
-            answer2Button.setTitle(titles[0], for: .normal)
-            answer3Button.setTitle(titles[1], for: .normal)
-            answer4Button.setTitle(titles[2], for: .normal)
-        case 2:
-            answer1Button.isHidden = true
-            answer2Button.isHidden = false
-            answer3Button.isHidden = false
-            answer4Button.isHidden = true
-            answer2Button.setTitle(titles[0], for: .normal)
-            answer3Button.setTitle(titles[1], for: .normal)
-        default:
-            answer1Button.isHidden = true
-            answer2Button.isHidden = false
-            answer3Button.isHidden = false
-            answer4Button.isHidden = true
-            answer2Button.setTitle("Мужчина", for: .normal)
-            answer3Button.setTitle("Женщина", for: .normal)
+        let countTitles = titles.count
+        let countButtons = arrayOfButtons.count
+        for i in 0..<countTitles {
+            arrayOfButtons[i].isHidden = false
+            arrayOfButtons[i].setTitle(titles[i], for: .normal)
+        }
+        for i in countTitles..<countButtons {
+            arrayOfButtons[i].isHidden = true
+        }
+        if countTitles <= 1 {
+            arrayOfButtons[0].isUserInteractionEnabled = false
         }
     }
+    
+    private func showNextPage() {
+        if currentPage < allPages - 1 {
+            guard let svc = surveyScrollView else { return }
+            let visibleRect = CGRect(x: svc.bounds.origin.x + svc.frame.width, y: 0, width: svc.frame.width, height: svc.frame.height)
+            svc.scrollRectToVisible(visibleRect, animated: true)
+            
+            currentPage = Int(round(visibleRect.origin.x / svc.frame.size.width))
+            itemLabel.text = "\((currentPage) + 1) / \(allPages)"
+            
+            guard let possibleAnswers = questions?[currentPage].possibleAnswers?.array[0] as! PossibleAnswers? else { return }
+            guard let answers = possibleAnswers.answers else { return }
+            setUpButtons(with: answers)
+            
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveLinear, animations: {
+                self.answerButtonsStack.alpha = 0
+            }, completion: nil)
+            UIView.animate(withDuration: 0.6, delay: 0.1, options: .curveLinear, animations: {
+                self.answerButtonsStack.alpha = 1
+            }, completion: nil)
+        } else {
+            setUpButtons(with: ["Почти готово..."])
+        }
+    }
+    
+    //executes the fetch request
+    private func performFetch() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error perform fetch: \(error.localizedDescription)")
+        }
+    }
+    
+    //CoreDataManager.saveContext()
+    private func saveContext() {
+        do {
+            try self.fetchedResultsController.managedObjectContext.save()
+        } catch let error as NSError {
+            print("Can't saved context: \(error.localizedDescription)")
+        }
+    }
+    
+    private func saveUserAnswer(_ sender: UIButton) {
+        if let userAnswer = questions?[currentPage].userAnswer {
+            userAnswer.answer = sender.currentTitle
+            saveContext()
+        } else {
+            print("ERROR SAVE ANSWER")
+        }
+        if currentPage == questions!.count - 1 {
+            UIView.animate(withDuration: 1.6, delay: 0.1, options: .curveLinear, animations: {
+                self.createProgramOutlet.alpha = 1
+            }, completion: {(complete) in
+                self.createProgramOutlet.isEnabled = true
+            })
+        }
+    }
+}
 
+extension UIButton {
+    func setBackgroundColor(color: UIColor, forState: UIControlState) {
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        UIGraphicsGetCurrentContext()?.setFillColor(color.cgColor)
+        UIGraphicsGetCurrentContext()?.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        self.setBackgroundImage(colorImage, for: forState)
+    }
 }

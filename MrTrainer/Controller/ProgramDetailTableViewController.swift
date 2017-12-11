@@ -90,7 +90,7 @@ class ProgramDetailTableViewController: UITableViewController {
         
         cell.nameLabel.text = exercise.title
         cell.difficultyLabel.text = " \(exercise.difficulty ?? "default") "
-        cell.musclesLabel.text = exercise.muscles?.joined(separator: ",")
+        cell.musclesLabel.text = exercise.muscles?.joined(separator: ", ")
         
         //in global queue
         DispatchQueue.global(qos: .userInteractive).async {
@@ -117,12 +117,6 @@ class ProgramDetailTableViewController: UITableViewController {
         //change color for even cells
         cell?.setColorForRowAt(index: indexPath.row)
     }
-    
-    //header
-//    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        let header = view as! UITableViewHeaderFooterView
-//        header.contentView.addSubview(headerImage)
-//    }
     
     // MARK: - Prepare For Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

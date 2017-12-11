@@ -30,18 +30,11 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
         view.backgroundColor = UIColor(red: 0x42/0xFF, green: 0x42/0xFF, blue: 0x42/0xFF, alpha: 1.0)
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.hidesBarsOnSwipe = false
-        
-        scrollView?.effect = .depth
-        scrollView?.delegate = self
 
         guard let exercise = exercise else { return }
         title = exercise.title
         imageView.image = UIImage.animatedImage(with: exercise.images!, duration: exercise.duration)
         text = exercise.text!
-        
-        text.forEach { [weak self] (text) in
-            self?.createScrollPage(with: text)
-        }
         
         musclesTextView.text = ""
         exercise.muscles?.forEach({ [weak self] (muscle) in
@@ -55,6 +48,15 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = 0
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollView?.effect = .depth
+        scrollView?.delegate = self
+        text.forEach { [weak self] (text) in
+            self?.createScrollPage(with: text)
+        }
+    }
+    
     //creating page with textView for scrollView
     private func createScrollPage(with text: String) {
         guard let scrollView = scrollView else {
@@ -64,10 +66,7 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
         let width = scrollView.frame.width
         let height = scrollView.frame.height
         let x = CGFloat(scrollView.subviews.count) * width / 2
-        print(width)
-        print(height)
-        print("\n")
-        
+
         let view = UIView(frame: CGRect(x: x, y: 0, width: width, height: height))
         view.backgroundColor = .white
         view.layer.cornerRadius = 8
@@ -81,7 +80,6 @@ class ExerciseDetailViewController: UIViewController, UIScrollViewDelegate {
         let textLabel = UILabel(frame: CGRect(x: x, y: height * 0.05, width: width, height: height * 0.9))
         textLabel.backgroundColor = .clear
         textLabel.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
-        //textLabel.alignmentRect(forFrame: CGRect(x: x * 1.2, y: height * 0.2, width: width * 0.6, height: height * 0.6))
         textLabel.textAlignment = .center
         textLabel.numberOfLines = 0
         textLabel.adjustsFontSizeToFitWidth = true
